@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/tv_click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_main_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="android5.0点击效果"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_animate1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_main_bg"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:text="控件显示和隐藏动画"
+        android:textSize="16sp"/>
+
+</LinearLayout>

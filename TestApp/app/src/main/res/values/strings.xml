@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TestApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="animate_layout_change">在父布局加上 android:animateLayoutChanges="true" 后，如果触发了layout方法（比如它的子View设置为GONE），系统就会自动帮你加上布局改变时的动画特效！！</string>
+</resources>

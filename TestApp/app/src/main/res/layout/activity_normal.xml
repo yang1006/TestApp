@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_hash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_main_bg"
+        android:padding="5dp"
+        android:text="HashMap和HashTable区别"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_mvp_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_main_bg"
+            android:padding="5dp"
+            android:text="MVP模式测试1"/>
+
+        <TextView
+            android:id="@+id/tv_mvp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_main_bg"
+            android:layout_marginLeft="20dp"
+            android:padding="5dp"
+            android:text="MVP模式测试2"/>
+
+    </LinearLayout>
+
+</LinearLayout>
