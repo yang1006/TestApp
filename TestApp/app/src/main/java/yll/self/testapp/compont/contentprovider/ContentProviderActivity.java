@@ -1,5 +1,6 @@
 package yll.self.testapp.compont.contentprovider;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +12,7 @@ import yll.self.testapp.R;
 /**
  * Created by yll on 2016/7/22.
  */
-public class ContentProviderActivity extends AppCompatActivity implements View.OnClickListener {
+public class ContentProviderActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

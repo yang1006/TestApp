@@ -3,6 +3,7 @@
     package="yll.self.testapp" >
 
     <application
+        android:name="yll.self.testapp.hook.HookApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -51,7 +52,7 @@
         <activity android:name="yll.self.testapp.other.OtherActivity"/>
         <activity android:name="yll.self.testapp.compont.contentprovider.ContactActivity"/>
         <activity android:name="yll.self.testapp.compont.contentprovider.ContentProviderActivity"/>
-
+        <activity android:name="yll.self.testapp.hook.HookTestActivity"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
 

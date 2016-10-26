@@ -19,6 +19,7 @@ import java.util.zip.ZipFile;
 
 import yll.self.testapp.R;
 import yll.self.testapp.WebviewTestActivity;
+import yll.self.testapp.hook.HookTestActivity;
 
 /**
  * Created by yll on 2016/7/18.
@@ -37,6 +38,7 @@ public class OtherActivity extends Activity implements View.OnClickListener {
     private void init(){
         findViewById(R.id.tv_test).setOnClickListener(this);
         findViewById(R.id.tv_js_test).setOnClickListener(this);
+        findViewById(R.id.tv_hook_test).setOnClickListener(this);
     }
 
 
@@ -49,6 +51,9 @@ public class OtherActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_js_test:
                 startActivity(new Intent(this, WebviewTestActivity.class));
+                break;
+            case R.id.tv_hook_test:
+                startActivity(new Intent(this, HookTestActivity.class));
                 break;
         }
     }
