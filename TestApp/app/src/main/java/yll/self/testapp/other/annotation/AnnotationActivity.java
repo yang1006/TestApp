@@ -1,6 +1,9 @@
 package yll.self.testapp.other.annotation;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,11 +17,13 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringRes;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
+import java.lang.reflect.Method;
+
 import yll.self.testapp.R;
 
 /**
  * Created by yll on 16/10/27.
- * 测试各种Annotation用法
+ * 测试各种AndroidAnnotation的注解用法
  * 全部用法 https://github.com/androidannotations/androidannotations/wiki/AvailableAnnotations
  *
  * 想要在普通的类中也用上注解，只需在类名加上@EBean
@@ -58,13 +63,19 @@ public class AnnotationActivity extends Activity {
     /**绑定点击事件*/
     @Click
     void tv_1(){
-        Toast.makeText(this, hello_world, Toast.LENGTH_LONG).show();
+        toast(hello_world);
     }
 
     @Click
     void tv_2(){
-        Toast.makeText(this, myPrefs.shockLevel().get()+"", Toast.LENGTH_LONG).show();
+        toast(myPrefs.shockLevel().get()+"");
         myPrefs.shockLevel().put(myPrefs.shockLevel().get() + 1);
+        analysisAnnotation();
+    }
+
+    @Click
+    void tv_3(){
+        startActivity(new Intent(this, CustomAnnotationActivity.class));
     }
 
     @AfterViews
@@ -85,8 +96,8 @@ public class AnnotationActivity extends Activity {
 
     /**在UI线程执行的方法 与异步线程 的交互就是方法直接的相互调用，不用再使用Handler去发送接收Message了。*/
     @UiThread
-    void doOtherThing(){
-
+    void toast(String s){
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
     }
 
     /**广播接收*/
@@ -94,6 +105,26 @@ public class AnnotationActivity extends Activity {
     public void updateSomething(){
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
+    /** 自定义注解 2:执行被TestAnnotation 注解的方法,取出value并打印*/
+    private void analysisAnnotation(){
 
+        AnnotationUtils annotationUtils = new AnnotationUtils();
+        Class<AnnotationUtils> clazz = AnnotationUtils.class;
+        try {
+            Method showName = clazz.getDeclaredMethod("showName");
+            if (showName.isAnnotationPresent(TestAnnotation.class)){
+                showName.invoke(annotationUtils);
+                TestAnnotation testAnnotation = showName.getAnnotation(TestAnnotation.class);
+                String value = testAnnotation.value();
+                Log.e("yll", "this is TestAnnotation's value->"+ value);
+            }
+        }catch (Exception e){
+
+        }
+    }
 }
