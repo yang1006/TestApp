@@ -12,8 +12,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface InjectViewYll {
-    String value() default "";
+public @interface InjectView {
     /**控件的id*/
     int id() default -1;
 }
