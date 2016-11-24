@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    
+    <Button
+        android:id="@+id/btn_start_ani"
+        android:layout_width="100dp"
+        android:layout_height="40dp" 
+        android:text="开始动画"/>
+    
+    <RelativeLayout
+        android:id="@+id/rl_ani"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="64dp">
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:background="@color/green"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            android:gravity="center"
+            android:textSize="16dp"/>
+
+        <yll.self.testapp.userinterface.animation.MyAnimationView
+            android:id="@+id/mav"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+</LinearLayout>

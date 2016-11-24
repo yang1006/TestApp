@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import yll.self.testapp.R;
+import yll.self.testapp.userinterface.animation.AnimationActivity;
 import yll.self.testapp.userinterface.animation.ChangeAniActivity;
 import yll.self.testapp.userinterface.animation.ClickBgActivity;
 
@@ -26,6 +27,7 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
     private void init(){
         findViewById(R.id.tv_click).setOnClickListener(this);
         findViewById(R.id.tv_animate1).setOnClickListener(this);
+        findViewById(R.id.tv_3).setOnClickListener(this);
     }
 
     @Override
@@ -37,6 +39,9 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_animate1:
                 startActivity(new Intent(context, ChangeAniActivity.class));
+                break;
+            case R.id.tv_3:
+                startActivity(new Intent(context, AnimationActivity.class));
                 break;
         }
     }
