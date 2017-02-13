@@ -3,9 +3,11 @@ package yll.self.testapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.Toast;
 
 /**
@@ -34,8 +36,15 @@ public class WebviewTestActivity extends Activity{
                     }
                 });
             }
-        }, "control");
+        }, "myObj");
         webView.loadUrl("file:///android_asset/111.html");
+        Button btn_click_js = (Button) findViewById(R.id.btn_click_js);
+        btn_click_js.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.loadUrl("javascript:funFromjs()");
+            }
+        });
     }
 
 

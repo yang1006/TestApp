@@ -6,10 +6,18 @@
 <script type="text/javascript">
 
 	function toastMessage(message){
-		window.control.toastMessage(message)
+		myObj.toastMessage(message)
+		<!--window.myObj.toastMessage(message)-->
 	}
 
-</script>
+	function funFromjs(){
+        document.getElementById("helloweb").innerHTML="HelloWebView,i'm from js";
+    }
 
+</script>
+<br/>
+<div id="helloweb">
+
+</div>
 </body>
 </html>

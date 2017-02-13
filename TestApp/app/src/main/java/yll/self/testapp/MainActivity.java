@@ -9,11 +9,14 @@ import android.view.Window;
 import android.widget.TextView;
 
 import yll.self.testapp.compont.CompontActivity;
+import yll.self.testapp.datasave.ParcelableTestClass;
 import yll.self.testapp.datasave.SaveDataActivity;
+import yll.self.testapp.datasave.SerializableTestClass;
 import yll.self.testapp.design.DesignActivity;
 import yll.self.testapp.normal.NormalActivity;
 import yll.self.testapp.userinterface.UIAndAniActivity;
 import yll.self.testapp.other.OtherActivity;
+import yll.self.testapp.utils.UtilsManager;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -39,6 +42,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_ui).setOnClickListener(this);
         findViewById(R.id.tv_design).setOnClickListener(this);
         findViewById(R.id.tv_other).setOnClickListener(this);
+        SerializableTestClass.serialize();
+        SerializableTestClass.deSerialize();
+
+        ParcelableTestClass.testParcelable();
     }
 
     @Override
