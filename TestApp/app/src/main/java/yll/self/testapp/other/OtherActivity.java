@@ -21,6 +21,7 @@ import yll.self.testapp.R;
 import yll.self.testapp.WebviewTestActivity;
 import yll.self.testapp.hook.HookTestActivity;
 import yll.self.testapp.other.annotation.AnnotationActivity_;
+import yll.self.testapp.other.lockscreen.LockScreenService;
 
 /**
  * Created by yll on 2016/7/18.
@@ -41,6 +42,7 @@ public class OtherActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_js_test).setOnClickListener(this);
         findViewById(R.id.tv_hook_test).setOnClickListener(this);
         findViewById(R.id.tv_annotation).setOnClickListener(this);
+        findViewById(R.id.tv_lock_screen).setOnClickListener(this);
     }
 
 
@@ -60,6 +62,9 @@ public class OtherActivity extends Activity implements View.OnClickListener {
             case R.id.tv_annotation:
 //                startActivity(new Intent(this, AnnotationActivity_.class));
                 AnnotationActivity_.intent(this).start();
+                break;
+            case R.id.tv_lock_screen:
+                startService(new Intent(this, LockScreenService.class));
                 break;
         }
     }
