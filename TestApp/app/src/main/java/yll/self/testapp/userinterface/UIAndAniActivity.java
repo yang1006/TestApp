@@ -10,6 +10,7 @@ import yll.self.testapp.R;
 import yll.self.testapp.userinterface.animation.AnimationActivity;
 import yll.self.testapp.userinterface.animation.ChangeAniActivity;
 import yll.self.testapp.userinterface.animation.ClickBgActivity;
+import yll.self.testapp.userinterface.lottie.LottieActivity;
 import yll.self.testapp.userinterface.animation.SlidingPaneActivity;
 
 /**
@@ -30,6 +31,7 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_animate1).setOnClickListener(this);
         findViewById(R.id.tv_3).setOnClickListener(this);
         findViewById(R.id.tv_4).setOnClickListener(this);
+        findViewById(R.id.tv_5).setOnClickListener(this);
     }
 
     @Override
@@ -47,6 +49,9 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_4:
                 startActivity(new Intent(context, SlidingPaneActivity.class));
+                break;
+            case R.id.tv_5:
+                startActivity(new Intent(context, LottieActivity.class));
                 break;
         }
     }

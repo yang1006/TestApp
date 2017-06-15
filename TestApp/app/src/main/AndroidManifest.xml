@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="yll.self.testapp" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="yll.self.testapp">
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        tools:overrideLibrary="com.airbnb.lottie"/>
 
     <application
         android:name="yll.self.testapp.hook.HookApplication"
@@ -58,6 +63,10 @@
         <activity android:name="yll.self.testapp.userinterface.animation.AnimationActivity"/>
         <activity android:name="yll.self.testapp.userinterface.animation.SlidingPaneActivity"/>
         <activity android:name=".other.lockscreen.CustomScreenLockActivity"/>
+        <activity android:name=".userinterface.lottie.LottieActivity"
+            android:label="Lottie"/>
+        <activity android:name=".userinterface.lottie.LottieShowActivity"
+            android:label="Lottie Effect"/>
 
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
@@ -73,6 +82,7 @@
                 <!--<action android:name="yll.self.testapp.UnOrderBroadAction"/>-->
             <!--</intent-filter>-->
         <!--</receiver>-->
+
     </application>
 
     <!--创建文件需要该权限-->
