@@ -1,63 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-    android:padding="15dp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_test"
-        android:textSize="16sp"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
-        android:text="给apk写数据"
-        android:gravity="center"
-        android:background="@drawable/selector_main_bg"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
 
-    <TextView
-        android:id="@+id/tv_js_test"
-        android:textSize="16sp"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
-        android:text="网页js与客户端调用"
-        android:gravity="center"
-        android:background="@drawable/selector_main_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_main_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="给apk写数据"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tv_hook_test"
-        android:textSize="16sp"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Hook Test"
-        android:gravity="center"
-        android:background="@drawable/selector_main_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_js_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_main_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="网页js与客户端调用"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tv_annotation"
-        android:textSize="16sp"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Annotation(注解) Test"
-        android:gravity="center"
-        android:background="@drawable/selector_main_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_hook_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_main_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Hook Test"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tv_lock_screen"
-        android:textSize="16sp"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
-        android:text="自定义锁屏界面 点击后息屏即可"
-        android:gravity="center"
-        android:background="@drawable/selector_main_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_annotation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_main_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Annotation(注解) Test"
+            android:textSize="16sp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_lock_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_main_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="自定义锁屏界面 点击后息屏即可"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_tts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_main_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="TTS 文字转语音"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</ScrollView>

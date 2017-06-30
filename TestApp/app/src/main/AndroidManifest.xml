@@ -67,7 +67,7 @@
             android:label="Lottie"/>
         <activity android:name=".userinterface.lottie.LottieShowActivity"
             android:label="Lottie Effect"/>
-
+        <activity android:name=".other.tts.TTSActivity"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
