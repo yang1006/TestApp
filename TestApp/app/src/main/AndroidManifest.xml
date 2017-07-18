@@ -71,6 +71,7 @@
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
+        <service android:name=".compont.service.CheckActivityService"/>
         <!--静态注册广播，谁的priority优先级高谁就先接收-->
         <!--<receiver android:name="yll.self.testapp.Compont.BoardCast.MyUnorderedBroadCastA">-->
             <!--<intent-filter android:priority="900">-->
@@ -95,5 +96,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <!--锁屏-->
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <!--系统级的弹窗-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
 </manifest>

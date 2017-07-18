@@ -46,4 +46,16 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_observer"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:text="启动一个service后台监听全屏和横屏"
+        android:gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/selector_main_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

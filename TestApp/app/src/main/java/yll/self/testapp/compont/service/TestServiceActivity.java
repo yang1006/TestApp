@@ -33,6 +33,7 @@ public class TestServiceActivity extends Activity implements View.OnClickListene
         findViewById(R.id.btn_stop_service).setOnClickListener(this);
         findViewById(R.id.btn_bind_service).setOnClickListener(this);
         findViewById(R.id.btn_unbind_service).setOnClickListener(this);
+        findViewById(R.id.tv_observer).setOnClickListener(this);
 
     }
 
@@ -51,6 +52,9 @@ public class TestServiceActivity extends Activity implements View.OnClickListene
                 break;
             case R.id.btn_unbind_service:
                 context.unbindService(serviceConnection);
+                break;
+            case R.id.tv_observer:
+                startService(new Intent(context, CheckActivityService.class));
                 break;
 
         }
