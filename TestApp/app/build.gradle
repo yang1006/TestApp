@@ -24,6 +24,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors{
+        tencent{}
+    }
+
 }
 
 dependencies {
@@ -36,7 +41,10 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     //lottie
     compile 'com.airbnb.android:lottie:2.0.0'
-
+    /**retrofit*/
+    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+    /**gson converter*/
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
 }
 
 //配置Android annotations

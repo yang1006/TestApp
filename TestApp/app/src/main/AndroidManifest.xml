@@ -68,6 +68,9 @@
         <activity android:name=".userinterface.lottie.LottieShowActivity"
             android:label="Lottie Effect"/>
         <activity android:name=".other.tts.TTSActivity"/>
+        <activity android:name=".thirdlib.ThirdLibActivity"/>
+        <activity android:name=".thirdlib.retrofit.RetrofitActivity"
+            android:label="Retrofit"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
@@ -98,5 +101,6 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
     <!--系统级的弹窗-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-
+    <!--网络-->
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
