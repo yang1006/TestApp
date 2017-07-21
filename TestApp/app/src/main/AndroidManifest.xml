@@ -12,7 +12,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <activity
             android:name="yll.self.testapp.MainActivity"
             android:label="@string/app_name" >
@@ -71,6 +72,7 @@
         <activity android:name=".thirdlib.ThirdLibActivity"/>
         <activity android:name=".thirdlib.retrofit.RetrofitActivity"
             android:label="Retrofit"/>
+        <activity android:name=".userinterface.ShowAllTextActivity"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
