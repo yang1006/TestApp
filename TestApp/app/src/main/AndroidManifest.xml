@@ -72,7 +72,8 @@
         <activity android:name=".thirdlib.ThirdLibActivity"/>
         <activity android:name=".thirdlib.retrofit.RetrofitActivity"
             android:label="Retrofit"/>
-        <activity android:name=".userinterface.ShowAllTextActivity"/>
+        <activity android:name=".userinterface.ShowAllTextActivity"
+            android:label="ShowAllTextActivity"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
@@ -105,4 +106,9 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <!--网络-->
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+                     tools:ignore="ProtectedPermissions" />
 </manifest>

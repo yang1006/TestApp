@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -54,7 +55,15 @@ public class TestServiceActivity extends Activity implements View.OnClickListene
                 context.unbindService(serviceConnection);
                 break;
             case R.id.tv_observer:
-                startService(new Intent(context, CheckActivityService.class));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    if (PermissionChecker.checkSelfPermission(context, Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_DENIED) {
+//                        startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+//                    } else {
+//                        startService(new Intent(context, CheckActivityService.class));
+                    }
+//                }else {
+                    startService(new Intent(context, CheckActivityService.class));
+//                }
                 break;
 
         }

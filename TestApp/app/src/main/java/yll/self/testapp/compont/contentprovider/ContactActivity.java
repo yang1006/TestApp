@@ -3,8 +3,15 @@ package yll.self.testapp.compont.contentprovider;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Event;
@@ -17,6 +24,8 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.CommonDataKinds.StructuredPostal;
 import android.provider.ContactsContract.CommonDataKinds.Website;
 import android.provider.ContactsContract.Data;
+import android.support.v4.content.PermissionChecker;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -38,11 +47,88 @@ public class ContactActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         tv_content = (TextView) findViewById(R.id.tv_content);
-        try {
-            tv_content.setText(getContactInfo());
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+        /** shouldShowRequestPermissionRationale 是否应该弹出权限请求弹窗
+         * 第一次请求权限调用前 一直返回false 第一次请求权限用户拒绝
+         * 第二次请求权限时 返回true
+         *
+         * 第二次请求权限时，才会有“不再提醒”的选项，如果用户一直拒绝，并没有选择“不再提醒”的选项，
+         * 下次请求权限时，会继续有“不再提醒”的选项，并且shouldShowRequestPermissionRationale()也会一直返回true
+         *
+         * 如果用户拒绝并选择 “不再提醒” 则之后返回false
+         *
+         * 所以利用这个函数我们可以进行相应的优化，针对shouldShowRequestPermissionRationale函数返回false的处理有两种方案。
+         * 第一种方案：如果应用是第一次请求该权限，则直接调用requestPermissions函数去请求权限；如果不是则代表用户勾选了’不再提醒’，弹出dialog，
+         * 告诉用户为什么你需要该权限，让用户自己手动开启该权限。链接：http://stackoverflow.com/questions/32347532/android-m-permissions-confused-on-the-usage-of-shouldshowrequestpermissionrati 。
+         *
+         * 第二种方案：在onRequestPermissionsResult函数中进行检测，如果返回PERMISSION_DENIED，则去调用shouldShowRequestPermissionRationale函数，
+         * 如果返回false代表用户已经禁止该权限（上面的3和4两种情况），弹出dialog告诉用户你需要该权限的理由，让用户手动打开。
+         * 链接：http://stackoverflow.com/questions/30719047/android-m-check-runtime-permission-how-to-determine-if-the-user-checked-nev*/
+        //这里采用第二种方案
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            Log.e("yll", "shouldShowRequestPermissionRationale "+shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS));
+            if (PermissionChecker.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED){
+                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 100);
+            }else {
+                try {
+                    tv_content.setText(getContactInfo());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else {
+            try {
+                tv_content.setText(getContactInfo());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 100){
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                try {
+                    tv_content.setText(getContactInfo());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }else if (grantResults[0] == PackageManager.PERMISSION_DENIED){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (!shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)){
+                        //表面用户已经彻底禁止了这个权限
+                        showDialog();
+                    }
+                }
+            }
+        }
+    }
+
+    private void showDialog(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("提示");
+        dialog.setMessage("没有读取联系人权限, 去手动授予权限");
+        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //跳到设置界面
+                Intent localIntent = new Intent();
+                localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                if (Build.VERSION.SDK_INT >= 9) {
+                    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                    localIntent.setData(Uri.fromParts("package", getPackageName(), null));
+                } else if (Build.VERSION.SDK_INT <= 8) {
+                    localIntent.setAction(Intent.ACTION_VIEW);
+                    localIntent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
+                    localIntent.putExtra("com.android.settings.ApplicationPkgName", getPackageName());
+                }
+                startActivity(localIntent);
+            }
+        });
+        dialog.setNegativeButton("取消", null);
+        dialog.show();
     }
     public String getContactInfo() throws JSONException {
         // 获得通讯录信息 ，URI是ContactsContract.Contacts.CONTENT_URI
