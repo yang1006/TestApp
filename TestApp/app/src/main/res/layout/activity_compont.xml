@@ -38,4 +38,15 @@
         android:text="ContentProvider"
         android:textSize="16sp"/>
 
+    <TextView
+        android:id="@+id/tv_wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_main_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="壁纸"
+        android:textSize="16sp"/>
+
 </LinearLayout>

@@ -9,6 +9,7 @@ import yll.self.testapp.compont.broadCast.SendBroadCastActivity;
 import yll.self.testapp.R;
 import yll.self.testapp.compont.contentprovider.ContentProviderActivity;
 import yll.self.testapp.compont.service.TestServiceActivity;
+import yll.self.testapp.compont.wallpaper.WallPaperActivity;
 
 /**
  * Created by yll on 2016/1/19.
@@ -26,6 +27,7 @@ public class CompontActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_service).setOnClickListener(this);
         findViewById(R.id.tv_broadcast).setOnClickListener(this);
         findViewById(R.id.tv_provider).setOnClickListener(this);
+        findViewById(R.id.tv_wallpaper).setOnClickListener(this);
     }
 
     @Override
@@ -39,6 +41,9 @@ public class CompontActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_provider:
                 startActivity(new Intent(CompontActivity.this, ContentProviderActivity.class));
+                break;
+            case R.id.tv_wallpaper:
+                startActivity(new Intent(CompontActivity.this, WallPaperActivity.class));
                 break;
         }
     }

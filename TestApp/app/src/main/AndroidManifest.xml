@@ -75,10 +75,24 @@
         <activity android:name=".userinterface.ShowAllTextActivity"
             android:label="ShowAllTextActivity"/>
         <activity android:name=".userinterface.TestViewActivity"/>
+        <activity android:name=".compont.wallpaper.WallPaperActivity"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
         <service android:name=".compont.service.CheckActivityService"/>
+
+        <service
+            android:name=".compont.wallpaper.CameraLiveWallpaper"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <!-- 为实时壁纸配置intent-filter -->
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <!-- 为实时壁纸配置meta-data -->
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/livewallpaper"/>
+        </service>
         <!--静态注册广播，谁的priority优先级高谁就先接收-->
         <!--<receiver android:name="yll.self.testapp.Compont.BoardCast.MyUnorderedBroadCastA">-->
             <!--<intent-filter android:priority="900">-->
@@ -112,4 +126,11 @@
 
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
                      tools:ignore="ProtectedPermissions" />
+
+    <!-- 设置壁纸 相机-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
 </manifest>
