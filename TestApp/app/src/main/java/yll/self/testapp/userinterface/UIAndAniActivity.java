@@ -33,6 +33,7 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_4).setOnClickListener(this);
         findViewById(R.id.tv_5).setOnClickListener(this);
         findViewById(R.id.tv_show_all).setOnClickListener(this);
+        findViewById(R.id.tv_unlock_view).setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +57,9 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_show_all:
                 startActivity(new Intent(context, ShowAllTextActivity.class));
+                break;
+            case R.id.tv_unlock_view:
+                startActivity(new Intent(context, TestViewActivity.class));
                 break;
         }
     }

@@ -74,6 +74,7 @@
             android:label="Retrofit"/>
         <activity android:name=".userinterface.ShowAllTextActivity"
             android:label="ShowAllTextActivity"/>
+        <activity android:name=".userinterface.TestViewActivity"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
