@@ -45,6 +45,7 @@ public class OtherActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_annotation).setOnClickListener(this);
         findViewById(R.id.tv_lock_screen).setOnClickListener(this);
         findViewById(R.id.tv_tts).setOnClickListener(this);
+        findViewById(R.id.tv_surfaceView).setOnClickListener(this);
     }
 
 
@@ -70,6 +71,9 @@ public class OtherActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_tts:
                 startActivity(new Intent(this, TTSActivity.class));
+                break;
+            case R.id.tv_surfaceView:
+                startActivity(new Intent(this, SurfaceViewTestActivity.class));
                 break;
         }
     }

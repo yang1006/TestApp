@@ -75,6 +75,17 @@
             android:padding="5dp"
             android:text="TTS 文字转语音"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_main_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="SurfaceView"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </ScrollView>
