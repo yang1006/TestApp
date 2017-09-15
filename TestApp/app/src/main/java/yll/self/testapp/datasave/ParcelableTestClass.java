@@ -58,7 +58,7 @@ public class ParcelableTestClass implements Parcelable{
         Bundle b = new Bundle();
         b.putParcelable("abc", new ParcelableTestClass(2, "zhang", true));
         ParcelableTestClass o = b.getParcelable("abc");
-        UtilsManager.log("o-->" + o.userId +" "+o.userName + " " + o.isMale);
+//        UtilsManager.log("o-->" + o.userId +" "+o.userName + " " + o.isMale);
     }
 
 }

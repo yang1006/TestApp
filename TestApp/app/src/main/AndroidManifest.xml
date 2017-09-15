@@ -77,6 +77,7 @@
         <activity android:name=".userinterface.TestViewActivity"/>
         <activity android:name=".compont.wallpaper.WallPaperActivity"/>
         <activity android:name=".other.SurfaceViewTestActivity"/>
+        <activity android:name=".other.thread.ThreadTestActivity"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
@@ -105,6 +106,8 @@
                 <!--<action android:name="yll.self.testapp.UnOrderBroadAction"/>-->
             <!--</intent-filter>-->
         <!--</receiver>-->
+
+        <service android:name=".other.thread.MyIntentService"/>
 
     </application>
 

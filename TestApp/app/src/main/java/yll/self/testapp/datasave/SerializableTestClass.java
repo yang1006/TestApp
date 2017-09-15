@@ -48,7 +48,7 @@ public class SerializableTestClass implements Serializable {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(Environment.getExternalStorageDirectory().getPath()+"/cache.txt"));
             SerializableTestClass o = (SerializableTestClass)in.readObject();
             in.close();
-            UtilsManager.log("o->"+o.userId+"  "+o.userName+ "  "+o.isMale);
+//            UtilsManager.log("o->"+o.userId+"  "+o.userName+ "  "+o.isMale);
         } catch (Exception e) {
             e.printStackTrace();
         }
