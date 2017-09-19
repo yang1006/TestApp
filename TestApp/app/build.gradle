@@ -18,6 +18,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -54,6 +55,9 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     /**文末显示...全文*/
     compile(name:'app-release', ext:'aar')
+
+    testCompile 'junit:junit:4.12'
+
 }
 
 //配置Android annotations
