@@ -7,81 +7,104 @@
     android:padding="10dp"
     android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/tv_click"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_main_bg"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="android5.0点击效果"
-        android:textSize="16sp"/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_animate1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_main_bg"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:padding="5dp"
-        android:text="控件显示和隐藏动画"
-        android:textSize="16sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="android5.0点击效果"
+                android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/tv_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_main_bg"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:padding="5dp"
-        android:text="各种"
-        android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_animate1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="控件显示和隐藏动画"
+                android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/tv_4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_main_bg"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:padding="5dp"
-        android:text="slidingPaneLayout"
-        android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="各种"
+                android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/tv_5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_main_bg"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:padding="5dp"
-        android:text="lottie 动画"
-        android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="slidingPaneLayout"
+                android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/tv_show_all"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_main_bg"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:padding="5dp"
-        android:text="textView 末尾显示...全文"
-        android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="lottie 动画"
+                android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/tv_unlock_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_main_bg"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:padding="5dp"
-        android:text="滑动解锁view"
-        android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_show_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="textView 末尾显示...全文"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_unlock_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="滑动解锁view"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_text_clock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="TextClock自动更新时间日期"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>

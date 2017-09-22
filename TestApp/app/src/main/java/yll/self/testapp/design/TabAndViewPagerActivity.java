@@ -50,7 +50,7 @@ public class TabAndViewPagerActivity extends Activity {
             tv.setTextSize(22);
             tvs.add(tv);
         }
-        tabLayout.setTabTextColors(Color.WHITE, Color.GRAY);//设置文本在选中和为选中时候的颜色
+        tabLayout.setTabTextColors(Color.WHITE, Color.RED);//设置文本在选中和为选中时候的颜色
 
         adapter = new MypageAdapter();
         viewPager.setAdapter(adapter);
@@ -58,7 +58,7 @@ public class TabAndViewPagerActivity extends Activity {
         tabLayout.setupWithViewPager(viewPager);
         //关联 TabLayout viewpager
         tabLayout.setTabsFromPagerAdapter(adapter);
-        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
     }
 
     class MypageAdapter extends PagerAdapter{

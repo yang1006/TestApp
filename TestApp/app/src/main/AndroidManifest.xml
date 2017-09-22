@@ -78,6 +78,7 @@
         <activity android:name=".compont.wallpaper.WallPaperActivity"/>
         <activity android:name=".other.SurfaceViewTestActivity"/>
         <activity android:name=".other.thread.ThreadTestActivity"/>
+        <activity android:name=".userinterface.views.TextClockTestActivity"/>
 
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
