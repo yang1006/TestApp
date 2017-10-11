@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -15,10 +16,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 import yll.self.testapp.R;
 import yll.self.testapp.thirdlib.retrofit.api.GitUserApi;
+import yll.self.testapp.thirdlib.retrofit.api.GitUserApiRxJava;
 import yll.self.testapp.thirdlib.retrofit.model.GitUserModel;
+import yll.self.testapp.utils.LogUtil;
 
 /**
  * Created by yll on 17/7/18.
@@ -45,6 +54,7 @@ public class RetrofitActivity extends AppCompatActivity {
         btn_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //获取github原始数据
                 progressBar.setVisibility(View.VISIBLE);
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
@@ -76,6 +86,7 @@ public class RetrofitActivity extends AppCompatActivity {
         btn_click2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //获取github数据并格式化数据
                 progressBar.setVisibility(View.VISIBLE);
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
@@ -104,6 +115,75 @@ public class RetrofitActivity extends AppCompatActivity {
                 });
             }
         });
+
+
+        Button btn_click3 = (Button) findViewById(R.id.btn_click3);
+        btn_click3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testRetrofitWithRxJava();
+            }
+        });
+    }
+
+    //RxJava 和 Retrofit 结合的网络请求
+    private void testRetrofitWithRxJava(){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        GitUserApiRxJava api = retrofit.create(GitUserApiRxJava.class);
+
+        api.getUserFeed("yang1006")
+                .subscribeOn(Schedulers.newThread())
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        progressBar.setVisibility(View.VISIBLE);
+                    }
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())  // doOnSubscribe 回调在主线程执行
+                .observeOn(Schedulers.newThread())   // doOnNext 在新线程执行
+                .doOnNext(new Action1<GitUserModel>() {
+                    @Override
+                    public void call(GitUserModel gitUserModel) {
+                        //这里可以先对返回的数据进行处理
+                        LogUtil.yll("doOnNext->"+Thread.currentThread());
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())   // Subscriber 回调在主线程执行
+                .subscribe(new Subscriber<GitUserModel>() {
+
+                    @Override
+                    public void onStart() {
+                        LogUtil.yll("onStart->" + Thread.currentThread());
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        progressBar.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        tv_content.setText("");
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(RetrofitActivity.this, "网络异常请重试", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNext(GitUserModel gitUserModel) {
+                        LogUtil.yll("onNext->"+ Thread.currentThread());
+                        tv_content.setText("login: "+ gitUserModel.getLogin()
+                                + " \nid: " + gitUserModel.getId()
+                                + " \navatar_url : " + gitUserModel.getAvatarUrl()
+                                + " \nurl: " + gitUserModel.getUrl()
+                                + " \nhtml_url: " + gitUserModel.getHtmlUrl());
+                    }
+                });
+
     }
 
 

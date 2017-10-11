@@ -17,7 +17,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_click"
-        android:text="获取gitbug数据并格式化数据"/>
+        android:text="获取github数据并格式化数据"/>
+
+    <Button
+        android:id="@+id/btn_click3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_click2"
+        android:text="RxJava + Retrofit"/>
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -28,7 +35,7 @@
         tools:visibility="visible"/>
 
     <ScrollView
-        android:layout_below="@id/btn_click2"
+        android:layout_below="@id/btn_click3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp">

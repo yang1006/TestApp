@@ -7,6 +7,7 @@ import android.view.View;
 
 import yll.self.testapp.R;
 import yll.self.testapp.thirdlib.retrofit.RetrofitActivity;
+import yll.self.testapp.thirdlib.rxjava.RxJavaTextActivity;
 
 /**
  * Created by yll on 17/7/18.
@@ -21,6 +22,7 @@ public class ThirdLibActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_third_lib);
 
         findViewById(R.id.tv_retrofit).setOnClickListener(this);
+        findViewById(R.id.tv_rxjava).setOnClickListener(this);
     }
 
     @Override
@@ -28,6 +30,9 @@ public class ThirdLibActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()){
             case R.id.tv_retrofit:
                 startActivity(new Intent(this, RetrofitActivity.class));
+                break;
+            case R.id.tv_rxjava:
+                startActivity(new Intent(this, RxJavaTextActivity.class));
                 break;
         }
     }

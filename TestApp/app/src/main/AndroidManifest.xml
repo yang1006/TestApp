@@ -83,6 +83,7 @@
         <service android:name= "yll.self.testapp.compont.service.TestService"/>
         <service android:name=".other.lockscreen.LockScreenService"/>
         <service android:name=".compont.service.CheckActivityService"/>
+        <activity android:name=".thirdlib.rxjava.RxJavaTextActivity"/>
 
         <service
             android:name=".compont.wallpaper.CameraLiveWallpaper"

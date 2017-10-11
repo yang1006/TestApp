@@ -31,6 +31,11 @@ android {
         tencent{}
     }
 
+    /**修复 单元测试报错 Method d in android.util.Log not mocked*/
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
 }
 
 repositories {
@@ -52,11 +57,18 @@ dependencies {
     /**retrofit*/
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
     /**gson converter*/
-    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    /** RxJavaCallAdapterFactory rxJava和 retrofit 一起使用时需要 */
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+
     /**文末显示...全文*/
     compile(name:'app-release', ext:'aar')
 
     testCompile 'junit:junit:4.12'
+
+    /**RxJava RxAndroid*/
+    compile "io.reactivex:rxjava:1.0.14"
+    compile 'io.reactivex:rxandroid:1.0.1'
 
 }
 
