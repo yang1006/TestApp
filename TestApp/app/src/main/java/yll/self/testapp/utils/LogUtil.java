@@ -16,4 +16,8 @@ public class LogUtil {
     public static void yll(String msg){
         Log.e("yll", msg);
     }
+
+    public static void d(String msg){
+        Log.d("yll", msg);
+    }
 }

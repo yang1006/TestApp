@@ -64,4 +64,9 @@ public class MyRxJavaTest {
         myRxJava.testDoOnSubscribe();
     }
 
+    @Test
+    public void testInterval() throws Exception{
+        myRxJava.testInterval();
+    }
+
 }

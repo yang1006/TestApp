@@ -36,6 +36,7 @@ public class RxJavaTextActivity extends AppCompatActivity {
 
         myRxJava.setSchedulerImageView(this, R.drawable.ic_launcher, iv_0);
 
+        myRxJava.testInterval();
 //        myRxJava.testMap(this, R.drawable.ic_launcher, iv_0);
     }
 

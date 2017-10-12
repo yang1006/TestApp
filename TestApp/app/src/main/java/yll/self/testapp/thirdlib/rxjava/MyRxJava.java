@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Observer;
@@ -552,5 +553,108 @@ public class MyRxJava {
      * 3、各种异步操作
      * 4、RxBus 使用 RxJava 实现了 EventBus
      * */
+
+    /**
+     * 延迟执行使用 timer 和 间隔执行使用 interval
+     * */
+    public void testInterval(){
+//        //延迟5秒执行
+//        Observable.timer(5, TimeUnit.SECONDS)
+//                .subscribe(new Subscriber<Long>() {
+//
+//                    @Override
+//                    public void onStart() {
+//                        //主线程
+//                        LogUtil.println("onStart " + System.currentTimeMillis() + "  " + Thread.currentThread());
+//                    }
+//
+//                    @Override
+//                    public void onCompleted() {
+//                        //计算线程
+//                        LogUtil.println("onCompleted " + System.currentTimeMillis() + "  " + Thread.currentThread());
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        LogUtil.println("onError "  + System.currentTimeMillis() + "  " + Thread.currentThread());
+//                    }
+//
+//                    @Override
+//                    public void onNext(Long aLong) {
+//                        //计算线程
+//                        LogUtil.println("onNext " + aLong + " " + System.currentTimeMillis() + "  " + Thread.currentThread());
+//                    }
+//                });
+
+        //延迟1s， 每隔2秒执行一次
+        Observable.interval(1, 2, TimeUnit.SECONDS)
+                .take(5) //指定轮询次数
+                .subscribe(new Subscriber<Long>() {
+                    @Override
+                    public void onStart() {
+                        //主线程
+                        LogUtil.yll("onStart " + System.currentTimeMillis() + "  " + Thread.currentThread());
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        //计算线程
+                        LogUtil.yll("onCompleted " + System.currentTimeMillis() + "  " + Thread.currentThread());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        if (aLong > 10){
+                            unsubscribe(); //取消订阅 停止 interval，不会触发onCompleted
+                            onCompleted();
+                            return;
+                        }
+                        //计算线程
+                        LogUtil.yll("onNext  " + aLong + " " + System.currentTimeMillis() + "  " + Thread.currentThread());
+                    }
+                });
+    }
+
+    /** 测试 interval 和生命周期绑定 todo 估计在2.x之后的版本中才支持*/
+    public void testIntervalWithLifeCycle(Activity activity){
+
+        Observable.interval(1, 2, TimeUnit.SECONDS)
+                .take(10)
+                .subscribe(new Subscriber<Long>() {
+                    @Override
+                    public void onStart() {
+                        //主线程
+                        LogUtil.yll("onStart " + System.currentTimeMillis() + "  " + Thread.currentThread());
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        //计算线程
+                        LogUtil.yll("onCompleted " + System.currentTimeMillis() + "  " + Thread.currentThread());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        if (aLong > 10){
+                            unsubscribe(); //取消订阅 停止 interval，不会触发onCompleted
+                            onCompleted();
+                            return;
+                        }
+                        //计算线程
+                        LogUtil.yll("onNext  " + aLong + " " + System.currentTimeMillis() + "  " + Thread.currentThread());
+                    }
+                });
+
+    }
 
 }
