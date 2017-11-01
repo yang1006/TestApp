@@ -35,4 +35,17 @@
             android:layout_height="match_parent"/>
         </RelativeLayout>
 
+
+    <Button
+        android:id="@+id/btn_tv_ani"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="文字动画"/>
+
+    <yll.self.testapp.userinterface.views.TextUpAniView
+        android:id="@+id/tv_ani"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:background="@color/light_blue"/>
+
 </LinearLayout>

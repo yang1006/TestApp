@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import yll.self.testapp.R;
+import yll.self.testapp.userinterface.views.TextUpAniView;
 
 /**
  * Created by yll on 16/11/23.
@@ -19,6 +20,8 @@ public class AnimationActivity extends Activity implements View.OnClickListener 
     private RelativeLayout rl_ani;
     private TextView tv_text;
     private MyAnimationView myAnimationView;
+
+    TextUpAniView textUpAniView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,9 @@ public class AnimationActivity extends Activity implements View.OnClickListener 
         rl_ani = (RelativeLayout) findViewById(R.id.rl_ani);
         myAnimationView = (MyAnimationView) findViewById(R.id.mav);
         tv_text = (TextView) findViewById(R.id.tv_text);
+
+        findViewById(R.id.btn_tv_ani).setOnClickListener(this);
+        textUpAniView = (TextUpAniView) findViewById(R.id.tv_ani);
     }
 
     @Override
@@ -34,6 +40,11 @@ public class AnimationActivity extends Activity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.btn_start_ani:
                 startAni(tv_text);
+                break;
+            case R.id.btn_tv_ani:
+                textUpAniView.startAni();
+                break;
+            default:
                 break;
         }
     }

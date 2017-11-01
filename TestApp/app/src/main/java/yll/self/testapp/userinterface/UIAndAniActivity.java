@@ -66,6 +66,8 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
             case R.id.tv_text_clock:
                 startActivity(new Intent(context, TextClockTestActivity.class));
                 break;
+            default:
+                break;
         }
     }
 }
