@@ -3,7 +3,12 @@ package yll.self.testapp.design;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +23,7 @@ import java.util.List;
 
 import yll.self.testapp.R;
 import yll.self.testapp.utils.RecyclerItemClickListener;
+import yll.self.testapp.utils.UtilsManager;
 
 /**
  * Created by yll on 2016/3/11.
@@ -37,106 +43,143 @@ import yll.self.testapp.utils.RecyclerItemClickListener;
 public class CollapsingToolbarActivity extends Activity {
 
 
-    private RecyclerView recycler;
-    private MyRecycleAdapter adapter;
-    private List<String> list;
-
     private CollapsingToolbarLayout collapsing_toolbar;
 
     private Toolbar toolbar;
+    private TabLayout tabs;
+    private ViewPager vp_viewpager;
+    private FloatingActionButton fab;
+    private AppBarLayout appbar;
 
+
+    private boolean isExpand = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collaping);
-        recycler = (RecyclerView) findViewById(R.id.recycler);
+//        recycler = (RecyclerView) findViewById(R.id.recycler);
         collapsing_toolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        initToolBar();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tabs = (TabLayout) findViewById(R.id.tabs);
+        vp_viewpager = (ViewPager) findViewById(R.id.vp_viewpager);
+        appbar = (AppBarLayout) findViewById(R.id.appbar);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isExpand) {
+                    appbar.setExpanded(false, false);
+                }else {
+                    appbar.setExpanded(true, false);
+                }
+                isExpand = !isExpand;
+            }
+        });
+        initToolBar();
         initCollapsing();
-        initRecyclerView();
+        initTab();
+        initViewPager();
+    }
+
+
+
+    private void initTab(){
+//        List<String> tabList = new ArrayList<>();
+//        tabList.add("Tab1");
+//        tabList.add("Tab2");
+//
+//        for (int i = 0; i < tabList.size(); i++) {
+//            if (i ==0){
+//                tabs.addTab(tabs.newTab().setText(tabList.get(i)), true);
+//            }else {
+//                tabs.addTab(tabs.newTab().setText(tabList.get(i)), false);
+//            }
+//        }
+        tabs.setupWithViewPager(vp_viewpager);
+        tabs.setSelectedTabIndicatorHeight(UtilsManager.dip2px(this, 2));
     }
 
 
     private void initToolBar(){
 //        setSupportActionBar(toolbar);
 //        setTitle("Test");
-        toolbar.setSubtitle("副标题");
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_card_sort));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.icon_back_light));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(CollapsingToolbarActivity.this, "icon被点击", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
-
-        toolbar.setLogo(R.drawable.ic_launcher);
     }
     private void initCollapsing(){
-        collapsing_toolbar.setTitle("标题");
-        /**展开时文字颜色*/
-        collapsing_toolbar.setExpandedTitleColor(Color.RED);
-        /**折叠时文字颜色*/
-        collapsing_toolbar.setCollapsedTitleTextColor(Color.WHITE);
-        /**折叠时背景色*/
+//        collapsing_toolbar.setTitle("挑一个男票");
+//        /**展开时文字颜色*/
+//        collapsing_toolbar.setExpandedTitleColor(Color.RED);
+//        /**折叠时文字颜色*/
+//        collapsing_toolbar.setCollapsedTitleTextColor(Color.WHITE);
+//        /**折叠时背景色*/
 //        collapsing_toolbar.setContentScrimColor(Color.BLUE);
     }
 
-    private void initRecyclerView(){
-        adapter = new MyRecycleAdapter();
-        recycler.setAdapter(adapter);
+    private void initViewPager(){
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CollapsingToolbarActivity.this, LinearLayoutManager.VERTICAL, false);
-        recycler.setLayoutManager(layoutManager);
+        ArrayList<View> pageViews = new ArrayList<>();
+        ArrayList<String> titles = new ArrayList<>();
+        CollapsingView view = new CollapsingView(this);
+        CollapsingView view1 = new CollapsingView(this);
 
-        recycler.addOnItemTouchListener( new RecyclerItemClickListener(CollapsingToolbarActivity.this,
-                new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        if (position >= 0 &&position < list.size()){
-                            list.remove(position);
-                            adapter.notifyItemRemoved(position);
-                        }
-                    }
-                }));
+        pageViews.add(view.getRoot());
+        pageViews.add(view1.getRoot());
 
+        titles.add("热门");
+        titles.add("最新");
+
+        MyPagerAdapter adapter = new MyPagerAdapter(pageViews, titles);
+        vp_viewpager.setAdapter(adapter);
     }
 
-    class MyRecycleAdapter extends RecyclerView.Adapter<MyRecycleAdapter.MyViewHolder>{
+    private class MyPagerAdapter extends PagerAdapter{
+        private ArrayList<View> pageViews = new ArrayList<>();
+        private ArrayList<String> titles = new ArrayList<>();
 
-        public MyRecycleAdapter(){
-            list = new ArrayList<>();
-            for (int i= 0; i < 100; i++){
-                list.add(i+"");
+        public MyPagerAdapter(ArrayList<View> pageViews, ArrayList<String> titles){
+            this.pageViews = pageViews;
+            this.titles = titles;
+        }
+
+        @Override
+        public int getCount() {
+            return pageViews.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles.get(position);
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            try {
+                container.addView(pageViews.get(position));
+            } catch (Exception e) {
+                container.removeView(pageViews.get(position));
+                container.addView(pageViews.get(position));
+                e.printStackTrace();
             }
+            return pageViews.get(position);
         }
 
         @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, final int i) {
-            TextView textView = new TextView(CollapsingToolbarActivity.this);
-            textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
-            textView.setGravity(Gravity.CENTER_VERTICAL);
-            return new MyViewHolder(textView);
-        }
-
-        @Override
-        public void onBindViewHolder(MyViewHolder viewHolder, int i) {
-            viewHolder.textView.setText(list.get(i));
-        }
-
-        @Override
-        public int getItemCount() {
-            return list == null ? 0 : list.size();
-        }
-
-        protected class MyViewHolder extends RecyclerView.ViewHolder{
-            protected TextView textView;
-
-            public MyViewHolder(View itemView) {
-                super(itemView);
-                this.textView  = (TextView) itemView;
-            }
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView(pageViews.get(position));
         }
     }
+
 
 }

@@ -21,6 +21,7 @@ import java.nio.ByteOrder;
 import java.util.zip.ZipFile;
 
 import yll.self.testapp.R;
+import yll.self.testapp.utils.LogUtil;
 
 /**
  * Created by yll on 2015/12/21.
@@ -43,6 +44,8 @@ public class SaveDataActivity extends Activity implements View.OnClickListener {
         tv_stream.setOnClickListener(this);
         findViewById(R.id.tv_db).setOnClickListener(this);
         findViewById(R.id.tv_test).setOnClickListener(this);
+        findViewById(R.id.tv_md5).setOnClickListener(this);
+        findViewById(R.id.tv_md5_1).setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +63,22 @@ public class SaveDataActivity extends Activity implements View.OnClickListener {
             case R.id.tv_test:
                 File file = new File(Environment.getExternalStorageDirectory().getPath() + "/test.apk");
                 writeApk(file, "111112312312");
+                break;
+            case R.id.tv_md5:
+                try {
+                    new Md5Test().test();
+                }catch (Exception e){
+                    LogUtil.yll("e->"+e.toString());
+                }
+                break;
+            case R.id.tv_md5_1:
+                try {
+                    new Md5Test().test2();
+                }catch (Exception e){
+                    LogUtil.yll("e->"+e.toString());
+                }
+                break;
+            default:
                 break;
         }
     }
