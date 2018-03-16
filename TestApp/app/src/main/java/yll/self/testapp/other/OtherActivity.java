@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -20,6 +21,8 @@ import java.util.zip.ZipFile;
 import yll.self.testapp.R;
 import yll.self.testapp.WebviewTestActivity;
 import yll.self.testapp.hook.HookTestActivity;
+import yll.self.testapp.jni.JniUtil;
+import yll.self.testapp.jni.MyJni;
 import yll.self.testapp.other.annotation.CustomAnnotationActivity;
 import yll.self.testapp.other.lockscreen.LockScreenService;
 import yll.self.testapp.other.thread.ThreadTestActivity;
@@ -31,6 +34,7 @@ import yll.self.testapp.other.tts.TTSActivity;
  */
 public class OtherActivity extends Activity implements View.OnClickListener {
 
+    private TextView tv_jni;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,10 @@ public class OtherActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_tts).setOnClickListener(this);
         findViewById(R.id.tv_surfaceView).setOnClickListener(this);
         findViewById(R.id.tv_thread).setOnClickListener(this);
+
+        tv_jni = findViewById(R.id.tv_jni);
+        new MyJni().set("今天");
+        tv_jni.setText(new JniUtil().test() +  new MyJni().get());
     }
 
 

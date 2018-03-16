@@ -7,6 +7,7 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
             assets.srcDirs = ['assets']
+            jni.srcDir 'src/jni'
         }
     }
 
@@ -17,6 +18,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //自动编译JNI代码并打成so包，还可以使用nkd build生成so包
+        ndk {
+            moduleName "myjni"
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a'
+        }
     }
     buildTypes {
         release {
