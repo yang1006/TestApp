@@ -57,7 +57,7 @@ public class AppBarLayoutActivity extends Activity implements Toolbar.OnMenuItem
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabs = (TabLayout) findViewById(R.id.tabs);
         recycler = (RecyclerView) findViewById(R.id.recycler);
-        initToolBar();
+//        initToolBar();
         initTab();
         initRecyclerView();
     }

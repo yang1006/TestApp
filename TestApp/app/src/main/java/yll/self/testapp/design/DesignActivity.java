@@ -31,6 +31,7 @@ public class DesignActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_6).setOnClickListener(this);
         findViewById(R.id.tv_7).setOnClickListener(this);
         findViewById(R.id.tv_8).setOnClickListener(this);
+        findViewById(R.id.tv_9).setOnClickListener(this);
     }
 
 
@@ -61,6 +62,9 @@ public class DesignActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_8:
                 intent.setClass(ctx, ScrollBehaviorActivity.class);
+                break;
+            case R.id.tv_9:
+                intent.setClass(ctx, ScrollingActivity.class);
                 break;
         }
         startActivity(intent);

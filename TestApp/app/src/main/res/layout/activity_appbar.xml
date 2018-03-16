@@ -10,32 +10,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:layout_height="?attr/actionBarSize"/>
+            android:layout_height="wrap_content"
+            android:minHeight="44dp"
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="44dp"-->
-            <!--app:layout_scrollFlags="scroll|enterAlways"-->
-            <!--android:gravity="center_vertical">-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:gravity="center_vertical"
+                android:background="@color/blue">
 
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:src="@drawable/icon_back"/>-->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_back_light"
+                    android:layout_centerVertical="true"/>
 
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textSize="15sp"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:text="标题"/>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"
+                    android:text="标题"/>
 
-        <!--</RelativeLayout>-->
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/red_light"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"

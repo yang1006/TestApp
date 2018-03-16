@@ -60,8 +60,8 @@ public class CollapsingToolbarActivity extends Activity {
 //        recycler = (RecyclerView) findViewById(R.id.recycler);
         collapsing_toolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        tabs = (TabLayout) findViewById(R.id.tabs);
-        vp_viewpager = (ViewPager) findViewById(R.id.vp_viewpager);
+//        tabs = (TabLayout) findViewById(R.id.tabs);
+//        vp_viewpager = (ViewPager) findViewById(R.id.vp_viewpager);
         appbar = (AppBarLayout) findViewById(R.id.appbar);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +78,7 @@ public class CollapsingToolbarActivity extends Activity {
         initToolBar();
         initCollapsing();
         initTab();
-        initViewPager();
+//        initViewPager();
     }
 
 
@@ -95,8 +95,8 @@ public class CollapsingToolbarActivity extends Activity {
 //                tabs.addTab(tabs.newTab().setText(tabList.get(i)), false);
 //            }
 //        }
-        tabs.setupWithViewPager(vp_viewpager);
-        tabs.setSelectedTabIndicatorHeight(UtilsManager.dip2px(this, 2));
+//        tabs.setupWithViewPager(vp_viewpager);
+//        tabs.setSelectedTabIndicatorHeight(UtilsManager.dip2px(this, 2));
     }
 
 

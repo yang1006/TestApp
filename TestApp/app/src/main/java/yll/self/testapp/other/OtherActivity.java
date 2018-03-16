@@ -20,7 +20,7 @@ import java.util.zip.ZipFile;
 import yll.self.testapp.R;
 import yll.self.testapp.WebviewTestActivity;
 import yll.self.testapp.hook.HookTestActivity;
-import yll.self.testapp.other.annotation.AnnotationActivity_;
+import yll.self.testapp.other.annotation.CustomAnnotationActivity;
 import yll.self.testapp.other.lockscreen.LockScreenService;
 import yll.self.testapp.other.thread.ThreadTestActivity;
 import yll.self.testapp.other.tts.TTSActivity;
@@ -65,8 +65,7 @@ public class OtherActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, HookTestActivity.class));
                 break;
             case R.id.tv_annotation:
-//                startActivity(new Intent(this, AnnotationActivity_.class));
-                AnnotationActivity_.intent(this).start();
+                startActivity(new Intent(this, CustomAnnotationActivity.class));
                 break;
             case R.id.tv_lock_screen:
                 startService(new Intent(this, LockScreenService.class));
