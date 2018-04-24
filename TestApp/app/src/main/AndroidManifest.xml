@@ -83,6 +83,7 @@
         <service android:name=".other.lockscreen.LockScreenService"/>
         <service android:name=".compont.service.CheckActivityService"/>
         <activity android:name=".thirdlib.rxjava.RxJavaTextActivity"/>
+        <activity android:name=".userinterface.opengl.OneOpenGlActivity"/>
 
         <activity
             android:name=".design.ScrollingActivity"

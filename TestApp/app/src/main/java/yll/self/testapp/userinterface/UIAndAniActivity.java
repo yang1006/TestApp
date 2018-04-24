@@ -12,6 +12,7 @@ import yll.self.testapp.userinterface.animation.ChangeAniActivity;
 import yll.self.testapp.userinterface.animation.ClickBgActivity;
 import yll.self.testapp.userinterface.lottie.LottieActivity;
 import yll.self.testapp.userinterface.animation.SlidingPaneActivity;
+import yll.self.testapp.userinterface.opengl.OneOpenGlActivity;
 import yll.self.testapp.userinterface.views.TextClockTestActivity;
 
 /**
@@ -36,6 +37,7 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_show_all).setOnClickListener(this);
         findViewById(R.id.tv_unlock_view).setOnClickListener(this);
         findViewById(R.id.tv_text_clock).setOnClickListener(this);
+        findViewById(R.id.tv_open_gl).setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +68,8 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
             case R.id.tv_text_clock:
                 startActivity(new Intent(context, TextClockTestActivity.class));
                 break;
+            case R.id.tv_open_gl:
+                startActivity(new Intent(context, OneOpenGlActivity.class));
             default:
                 break;
         }

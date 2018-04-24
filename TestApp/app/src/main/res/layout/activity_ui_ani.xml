@@ -102,6 +102,17 @@
                 android:text="TextClock自动更新时间日期"
                 android:textSize="16sp"/>
 
+            <TextView
+                android:id="@+id/tv_open_gl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_main_bg"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="GlSurfaceView"
+                android:textSize="16sp"/>
+
         </LinearLayout>
 
     </ScrollView>
