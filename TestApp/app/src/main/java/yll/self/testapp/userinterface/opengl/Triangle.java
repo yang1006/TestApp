@@ -7,7 +7,7 @@ import java.nio.FloatBuffer;
 //三角形图
 public class Triangle {
 
-    private FloatBuffer vertexBuffer;
+    private FloatBuffer vertexBuffer, colorBuffer;
 
     // number of coordinates per vertex in this array 每个顶点3个坐标(x,y,z)
     static final int COORDS_PER_VERTEX = 3;
@@ -18,8 +18,9 @@ public class Triangle {
             0.5f, -0.5f, 0.0f  // bottom right
     };
 
-    // Set color with red, green, blue and alpha (opacity) values
-    float color[] = { 255, 0, 0, 1.0f };
+    float color[] = {  1.0f, 0f, 0f, 1.0f ,
+            0f, 1.0f, 0f, 1.0f ,
+            0f, 0f, 1.0f, 1.0f };
 
     /**
      * shader的变量类型(uniform，attribute和varying)的区别
@@ -38,24 +39,21 @@ public class Triangle {
      * */
     //着色器代码
     private final String vertexShaderCode =
-            // This matrix member variable provides a hook to manipulate
-            // the coordinates of the objects that use this vertex shader
-            "uniform mat4 uMVPMatrix;" +
-                    "attribute vec4 vPosition;" +
+            "attribute vec4 vPosition;" +
+                    "uniform mat4 uMVPMatrix;"+
+                    "varying  vec4 vColor;"+
+                    "attribute vec4 aColor;"+
                     "void main() {" +
-                    // the matrix must be included as a modifier of gl_Position
-                    // Note that the uMVPMatrix factor *must be first* in order
-                    // for the matrix multiplication product to be correct.
-                    "  gl_Position = uMVPMatrix * vPosition;" +
+                    "  gl_Position = uMVPMatrix*vPosition;" +
+                    "  vColor=aColor;"+
                     "}";
 
     private final String fragmentShaderCode =
             "precision mediump float;" +
-                    "uniform vec4 vColor;" +
+                    "varying vec4 vColor;" +
                     "void main() {" +
                     "  gl_FragColor = vColor;" +
                     "}";
-
     private final int mProgram;
     private int mPositionHandle;
     private int mColorHandle;
@@ -68,6 +66,7 @@ public class Triangle {
     public Triangle(){
         //数据转换
         vertexBuffer = TransBufferUtil.float2FloatBuffer(triangleCoords);
+        colorBuffer = TransBufferUtil.float2FloatBuffer(color);
 
         int vertexShader = OneGlRender.loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);
         int fragmentShader = OneGlRender.loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);
@@ -84,32 +83,46 @@ public class Triangle {
 
     //绘制三角形
     public void draw(float[] mvpMatrix){
-        //将程序添加到 OpenGL ES 环境
-        GLES20.glUseProgram(mProgram);
-        /**这样绘制会变形*/
-        //获取顶点着色器的位置的句柄
-        mPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
-        //启用三角形顶点位置的句柄
-        GLES20.glEnableVertexAttribArray(mPositionHandle);
-        //准备三角形坐标数据
-        GLES20.glVertexAttribPointer(mPositionHandle, COORDS_PER_VERTEX,
-                GLES20.GL_FLOAT, false, vertexStride, vertexBuffer);
-        //获取片段着色器的颜色的句柄
-        mColorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
-        //设置绘制三角形的颜色
-        GLES20.glUniform4fv(mColorHandle, 1, color, 0);
-        //绘制三角形
-        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount);
-        //禁用点点数组
-        GLES20.glDisableVertexAttribArray(mPositionHandle);
 
-        /**这样绘制不会变形*/
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT| GLES20.GL_DEPTH_BUFFER_BIT);
+        // 将程序添加到OpenGL ES环境
+        GLES20.glUseProgram(mProgram);
+
+        // 得到形状的变换矩阵的句柄
         mMVPMatrixHandle = GLES20.glGetUniformLocation(mProgram, "uMVPMatrix");
 
+        // 将投影和视图转换传递给着色器
         GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mvpMatrix, 0);
-        //绘制三角形
+
+        // 获取顶点着色器的vPosition成员的句柄
+        mPositionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
+
+        // 启用三角形顶点的句柄
+        GLES20.glEnableVertexAttribArray(mPositionHandle);
+
+        // 准备三角形坐标数据
+        GLES20.glVertexAttribPointer(mPositionHandle, COORDS_PER_VERTEX,
+                GLES20.GL_FLOAT, false,
+                vertexStride, vertexBuffer);
+
+       /* // 获取片段着色器的vColor成员的句柄
+        mColorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
+        // 设置绘制三角形的颜色
+        GLES20.glUniform4fv(mColorHandle, 1, colorBuffer, 0);*/
+
+        //获取片元着色器的vColor成员的句柄
+        mColorHandle = GLES20.glGetAttribLocation(mProgram, "aColor");
+        //设置绘制三角形的颜色
+        GLES20.glEnableVertexAttribArray(mColorHandle);
+        GLES20.glVertexAttribPointer(mColorHandle,4,
+                GLES20.GL_FLOAT,false,
+                0,colorBuffer);
+
+
+        // 画三角形
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount);
-        //禁用顶点数组
+
+        // 禁用顶点数组
         GLES20.glDisableVertexAttribArray(mPositionHandle);
 
     }
