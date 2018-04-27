@@ -1,15 +1,25 @@
 package yll.self.testapp.userinterface;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.PermissionChecker;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.Toast;
 
 import yll.self.testapp.R;
 import yll.self.testapp.userinterface.animation.AnimationActivity;
 import yll.self.testapp.userinterface.animation.ChangeAniActivity;
 import yll.self.testapp.userinterface.animation.ClickBgActivity;
+import yll.self.testapp.userinterface.camera.CameraPreviewActivity;
 import yll.self.testapp.userinterface.lottie.LottieActivity;
 import yll.self.testapp.userinterface.animation.SlidingPaneActivity;
 import yll.self.testapp.userinterface.opengl.OneOpenGlActivity;
@@ -38,6 +48,7 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_unlock_view).setOnClickListener(this);
         findViewById(R.id.tv_text_clock).setOnClickListener(this);
         findViewById(R.id.tv_open_gl).setOnClickListener(this);
+        findViewById(R.id.tv_camera_preview).setOnClickListener(this);
     }
 
     @Override
@@ -70,8 +81,54 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_open_gl:
                 startActivity(new Intent(context, OneOpenGlActivity.class));
+                break;
+            case R.id.tv_camera_preview:
+                requestCameraPermission();
+                break;
             default:
                 break;
+        }
+    }
+
+    private String[] items = new String[]{
+            CameraPreviewActivity.SurfaceView,
+            CameraPreviewActivity.GlSurfaceView,
+            CameraPreviewActivity.SurfaceTexture,
+            CameraPreviewActivity.TextureView
+    };
+
+
+    private void showCameraPreview(){
+        AlertDialog.Builder builder  = new AlertDialog.Builder(context);
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                CameraPreviewActivity.open(context, items[which]);
+            }
+        });
+        builder.show();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void requestCameraPermission(){
+        if (PermissionChecker.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, CODE_REQUEST_CAMERA);
+        }else {
+            showCameraPreview();
+        }
+    }
+
+
+    private final int CODE_REQUEST_CAMERA = 100;
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CODE_REQUEST_CAMERA){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                showCameraPreview();
+            }else {
+                Toast.makeText(this, "获取相机权限失败", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
