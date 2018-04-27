@@ -93,7 +93,6 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
     private String[] items = new String[]{
             CameraPreviewActivity.SurfaceView,
             CameraPreviewActivity.GlSurfaceView,
-            CameraPreviewActivity.SurfaceTexture,
             CameraPreviewActivity.TextureView
     };
 

@@ -19,4 +19,6 @@ public abstract class CameraPreviewFragment {
 
     public abstract void init();
 
+    public void onDestroy(){}
+
 }
