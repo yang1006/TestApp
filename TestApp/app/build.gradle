@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin:'kotlin-android-extensions'
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
@@ -47,6 +49,7 @@ repositories {
     flatDir {
         dirs 'libs'
     }
+    mavenCentral()
 }
 
 dependencies {
@@ -72,5 +75,6 @@ dependencies {
     /**RxJava RxAndroid*/
     compile "io.reactivex:rxjava:1.0.14"
     compile 'io.reactivex:rxandroid:1.0.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
 }
