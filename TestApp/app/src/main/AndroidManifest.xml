@@ -85,6 +85,7 @@
         <activity android:name=".thirdlib.rxjava.RxJavaTextActivity"/>
         <activity android:name=".userinterface.opengl.OneOpenGlActivity"/>
         <activity android:name=".userinterface.camera.CameraPreviewActivity"/>
+        <activity android:name=".userinterface.GifActivity"/>
 
         <activity
             android:name=".design.ScrollingActivity"
@@ -103,6 +104,29 @@
             <meta-data
                 android:name="android.service.wallpaper"
                 android:resource="@xml/livewallpaper"/>
+        </service>
+
+        <service android:name=".compont.wallpaper.GifLiveWallpaper"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/livewallpaper_gif"/>
+        </service>
+
+        <service
+            android:name=".compont.wallpaper.VideoLiveWallpaper"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <!-- 为实时壁纸配置intent-filter -->
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <!-- 为实时壁纸配置meta-data -->
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/livewallpaper_video"/>
         </service>
         <!--静态注册广播，谁的priority优先级高谁就先接收-->
         <!--<receiver android:name="yll.self.testapp.Compont.BoardCast.MyUnorderedBroadCastA">-->
@@ -143,6 +167,9 @@
     <!-- 设置壁纸 相机-->
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <!--//清除壁纸-->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 

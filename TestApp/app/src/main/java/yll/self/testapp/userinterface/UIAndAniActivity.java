@@ -49,6 +49,7 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_text_clock).setOnClickListener(this);
         findViewById(R.id.tv_open_gl).setOnClickListener(this);
         findViewById(R.id.tv_camera_preview).setOnClickListener(this);
+        findViewById(R.id.tv_gif).setOnClickListener(this);
     }
 
     @Override
@@ -85,6 +86,9 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
             case R.id.tv_camera_preview:
                 requestCameraPermission();
                 break;
+            case R.id.tv_gif:
+                requestStoragePermission();
+                break;
             default:
                 break;
         }
@@ -108,6 +112,10 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
         builder.show();
     }
 
+    private void jump2GifActivity(){
+        startActivity(new Intent(context, GifActivity.class));
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void requestCameraPermission(){
         if (PermissionChecker.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
@@ -117,8 +125,18 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void requestStoragePermission(){
+        if (PermissionChecker.checkSelfPermission(this, Manifest.permission_group.STORAGE) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, CODE_REQUEST_STORAGE);
+        }else {
+            jump2GifActivity();
+        }
+    }
+
 
     private final int CODE_REQUEST_CAMERA = 100;
+    private final int CODE_REQUEST_STORAGE = 101;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -127,6 +145,13 @@ public class UIAndAniActivity extends Activity implements View.OnClickListener {
                 showCameraPreview();
             }else {
                 Toast.makeText(this, "获取相机权限失败", Toast.LENGTH_SHORT).show();
+            }
+        }else if (requestCode == CODE_REQUEST_STORAGE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                jump2GifActivity();
+            }else {
+                Toast.makeText(this, "获取存储权限失败", Toast.LENGTH_SHORT).show();
             }
         }
     }

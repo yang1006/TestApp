@@ -54,8 +54,8 @@ public class OtherActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_thread).setOnClickListener(this);
 
         tv_jni = findViewById(R.id.tv_jni);
-        new MyJni().set("今天");
-        tv_jni.setText(new JniUtil().test() +  new MyJni().get());
+//        new MyJni().set("今天");
+//        tv_jni.setText(new JniUtil().test() +  new MyJni().get());
     }
 
 

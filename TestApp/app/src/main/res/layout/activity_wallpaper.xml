@@ -16,4 +16,45 @@
         android:text="相机壁纸"
         android:textSize="16sp"/>
 
+    <TextView
+        android:id="@+id/tv_gif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_main_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="gif壁纸"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_mv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_main_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="视频壁纸"
+        android:textSize="16sp"/>
+
+    <CheckBox
+        android:id="@+id/id_cb_voice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="视频壁纸是否静音" />
+
+
+    <TextView
+        android:id="@+id/tv_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_main_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="清除壁纸"
+        android:textSize="16sp"/>
+
 </LinearLayout>
