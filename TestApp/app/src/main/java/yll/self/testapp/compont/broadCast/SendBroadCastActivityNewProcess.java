@@ -12,7 +12,7 @@ import yll.self.testapp.R;
  * Created by yll on 2016/1/20.
  * 用于发送广播的activity
  */
-public class SendBroadCastActivity extends Activity implements View.OnClickListener {
+public class SendBroadCastActivityNewProcess extends Activity implements View.OnClickListener {
 
     public final String UnOrderBroadAction = "yll.self.testapp.UnOrderBroadAction";
     public final String OrderBroadAction = "yll.self.testapp.OrderBroadAction";

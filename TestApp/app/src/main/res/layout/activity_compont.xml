@@ -28,6 +28,17 @@
         android:textSize="16sp"/>
 
     <TextView
+        android:id="@+id/tv_broadcast2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_main_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="新进程中发送广播"
+        android:textSize="16sp"/>
+
+    <TextView
         android:id="@+id/tv_provider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
