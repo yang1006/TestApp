@@ -12,6 +12,7 @@ import android.support.v4.content.PermissionChecker;
 import android.view.View;
 import android.widget.Toast;
 
+import yll.self.testapp.compont.broadCast.CancelStaticBroadCastActivity;
 import yll.self.testapp.compont.broadCast.SendBroadCastActivity;
 import yll.self.testapp.R;
 import yll.self.testapp.compont.broadCast.SendBroadCastActivityNewProcess;
@@ -37,6 +38,7 @@ public class CompontActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_broadcast2).setOnClickListener(this);
         findViewById(R.id.tv_provider).setOnClickListener(this);
         findViewById(R.id.tv_wallpaper).setOnClickListener(this);
+        findViewById(R.id.tv_broadcast3).setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +67,9 @@ public class CompontActivity extends Activity implements View.OnClickListener {
                     startActivity(new Intent(CompontActivity.this, WallPaperActivity.class));
                 }
 
+                break;
+            case R.id.tv_broadcast3:
+                startActivity(new Intent(CompontActivity.this, CancelStaticBroadCastActivity.class));
                 break;
         }
     }

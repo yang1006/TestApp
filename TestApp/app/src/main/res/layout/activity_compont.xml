@@ -60,4 +60,15 @@
         android:text="壁纸"
         android:textSize="16sp"/>
 
+    <TextView
+        android:id="@+id/tv_broadcast3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_main_bg"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="取消静态注册的广播"
+        android:textSize="16sp"/>
+
 </LinearLayout>

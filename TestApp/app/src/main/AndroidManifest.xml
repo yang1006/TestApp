@@ -88,6 +88,12 @@
         <activity android:name=".userinterface.opengl.OneOpenGlActivity"/>
         <activity android:name=".userinterface.camera.CameraPreviewActivity"/>
         <activity android:name=".userinterface.GifActivity"/>
+        <activity android:name=".compont.broadCast.CancelStaticBroadCastActivity"/>
+        <receiver android:name=".compont.broadCast.MyStaticBroadCastReceiver">
+            <intent-filter>
+                <action android:name="TEST_CANCEL_STATIC_BROADCAST_RECEIVER"/>
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".design.ScrollingActivity"
