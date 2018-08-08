@@ -7,6 +7,9 @@
         android:minSdkVersion="14"
         tools:overrideLibrary="com.airbnb.lottie"/>
 
+    <!-- Tell the system this application requires OpenGL ES 3.0. -->
+    <uses-feature android:glEsVersion="0x00030000" android:required="true"/>
+
     <application
         android:name="yll.self.testapp.hook.HookApplication"
         android:allowBackup="true"
@@ -100,6 +103,9 @@
             android:label="ScrollingActivity"
             android:parentActivityName=".design.DesignActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".opengl.OpenGLMainActivity" />
+        <activity android:name=".opengl.HelloTriangleActivity"
+            android:label="第一个三角形"/>
 
         <service
             android:name=".compont.wallpaper.CameraLiveWallpaper"

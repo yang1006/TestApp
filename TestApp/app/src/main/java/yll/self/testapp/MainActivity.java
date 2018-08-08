@@ -14,6 +14,7 @@ import yll.self.testapp.datasave.SaveDataActivity;
 import yll.self.testapp.datasave.SerializableTestClass;
 import yll.self.testapp.design.DesignActivity;
 import yll.self.testapp.normal.NormalActivity;
+import yll.self.testapp.opengl.OpenGLMainActivity;
 import yll.self.testapp.thirdlib.ThirdLibActivity;
 import yll.self.testapp.userinterface.UIAndAniActivity;
 import yll.self.testapp.other.OtherActivity;
@@ -44,6 +45,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_design).setOnClickListener(this);
         findViewById(R.id.tv_other).setOnClickListener(this);
         findViewById(R.id.tv_third_lib).setOnClickListener(this);
+        findViewById(R.id.tv_open_gl).setOnClickListener(this);
         SerializableTestClass.serialize();
         SerializableTestClass.deSerialize();
 
@@ -80,6 +82,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_third_lib:
                 intent = new Intent(ctx, ThirdLibActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_open_gl:
+                intent = new Intent(ctx, OpenGLMainActivity.class);
                 startActivity(intent);
                 break;
         }
