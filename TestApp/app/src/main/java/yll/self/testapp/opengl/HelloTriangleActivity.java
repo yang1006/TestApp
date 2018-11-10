@@ -67,7 +67,9 @@ public class HelloTriangleActivity extends BaseActivity {
         private FloatBuffer mVertices;
         private final String TAG = "HelloTriangleRenderer";
         private final float[] mVerticesData =
-                { 0.0f, 0.5f, 0.0f, -0.5f, -0.5f, 0.0f, 0.5f, -0.5f, 0.0f };
+                {       0.0f, 0.5f, 0.0f,
+                        -0.5f, -0.5f, 0.0f,
+                        0.5f, -0.5f, 0.0f };
 
         HelloTriangleRenderer(){
             mVertices = ByteBuffer.allocateDirect(mVerticesData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
@@ -165,7 +167,7 @@ public class HelloTriangleActivity extends BaseActivity {
             // Use the program object
             GLES30.glUseProgram(mProgramObject);
 
-            // Load the vertex data
+            // Load the vertex data   指定顶点数组
             GLES30.glVertexAttribPointer(0, 3, GLES30.GL_FLOAT, false, 0, mVertices);
             GLES30.glEnableVertexAttribArray(0);
             //通知绘制图元

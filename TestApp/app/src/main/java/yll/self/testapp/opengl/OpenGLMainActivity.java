@@ -21,6 +21,7 @@ public class OpenGLMainActivity extends Activity implements View.OnClickListener
 
     private void initViews(){
         findViewById(R.id.tv_first_triangle).setOnClickListener(this);
+        findViewById(R.id.tv_6_3).setOnClickListener(this);
     }
 
     @Override
@@ -28,6 +29,9 @@ public class OpenGLMainActivity extends Activity implements View.OnClickListener
         switch (v.getId()){
             case R.id.tv_first_triangle:
                 startActivity(new Intent(activity, HelloTriangleActivity.class));
+                break;
+            case R.id.tv_6_3:
+                startActivity(new Intent(activity, Chapter6Example6_3Activity.class));
                 break;
         }
     }

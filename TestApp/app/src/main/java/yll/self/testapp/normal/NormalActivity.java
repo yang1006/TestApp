@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import yll.self.testapp.R;
@@ -20,6 +21,7 @@ public class NormalActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("yll", "NoramlActivity onCreate");
         setContentView(R.layout.activity_normal);
         ctx = NormalActivity.this;
         init();
@@ -48,5 +50,35 @@ public class NormalActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("yll", "NoramlActivity onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("yll", "NoramlActivity onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("yll", "NoramlActivity onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("yll", "NoramlActivity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("yll", "NoramlActivity onDestroy");
     }
 }

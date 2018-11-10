@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -20,7 +23,7 @@ import yll.self.testapp.userinterface.UIAndAniActivity;
 import yll.self.testapp.other.OtherActivity;
 import yll.self.testapp.utils.UtilsManager;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     private TextView tv_normal, tv_data_save;
     private Context ctx;
@@ -28,6 +31,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("yll", "MainActivity onCreate");
         setContentView(R.layout.activity_main);
         getWindow().addFlags(Window.FEATURE_NO_TITLE);
         ctx = MainActivity.this;
@@ -91,4 +95,38 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("yll", "MainActivity onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("yll", "MainActivity onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //测试在onPause中是否可以实例化fragment
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        TestFragment fragment = new TestFragment();
+        ft.add(R.id.fl, fragment);
+        ft.commit();
+        Log.e("yll", "MainActivity onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("yll", "MainActivity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("yll", "MainActivity onDestroy");
+    }
 }
