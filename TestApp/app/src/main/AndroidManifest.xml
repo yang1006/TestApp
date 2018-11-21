@@ -109,6 +109,7 @@
         <activity android:name=".opengl.Chapter6Example6_3Activity" />
         <activity android:name=".video.VideoMainActivity" />
         <activity android:name=".video.PlayerActivity" />
+        <activity android:name=".compont.fragment.TestFragmentActivity"/>
 
         <service
             android:name=".compont.wallpaper.CameraLiveWallpaper"

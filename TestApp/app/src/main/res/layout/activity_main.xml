@@ -6,12 +6,6 @@
     android:padding="16dp"
     android:orientation="vertical">
 
-
-    <FrameLayout
-        android:id="@+id/fl"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"></FrameLayout>
-
     <TextView
         android:id="@+id/tv_normal"
         android:textSize="16sp"

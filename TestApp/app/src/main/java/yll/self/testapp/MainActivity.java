@@ -1,6 +1,5 @@
 package yll.self.testapp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import yll.self.testapp.compont.CompontActivity;
+import yll.self.testapp.compont.fragment.TestFragment;
 import yll.self.testapp.datasave.ParcelableTestClass;
 import yll.self.testapp.datasave.SaveDataActivity;
 import yll.self.testapp.datasave.SerializableTestClass;
@@ -21,7 +21,6 @@ import yll.self.testapp.opengl.OpenGLMainActivity;
 import yll.self.testapp.thirdlib.ThirdLibActivity;
 import yll.self.testapp.userinterface.UIAndAniActivity;
 import yll.self.testapp.other.OtherActivity;
-import yll.self.testapp.utils.UtilsManager;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
@@ -110,11 +109,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onPause() {
         super.onPause();
-        //测试在onPause中是否可以实例化fragment
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        TestFragment fragment = new TestFragment();
-        ft.add(R.id.fl, fragment);
-        ft.commit();
         Log.e("yll", "MainActivity onPause");
     }
 

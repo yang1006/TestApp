@@ -1,4 +1,4 @@
-package yll.self.testapp;
+package yll.self.testapp.compont.fragment;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,25 +12,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class TestFragment extends Fragment {
+import yll.self.testapp.utils.LogUtil;
 
+public class TestFragment extends Fragment {
+    
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.e("yll", "onAttach");
+        LogUtil.yll( "onAttach");
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("yll", "onCreate");
+        LogUtil.yll( "onCreate");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.e("yll", "onCreateView");
+        LogUtil.yll( "onCreateView");
         TextView tv = new TextView(getActivity());
         tv.setText("1111111111");
         tv.setTextColor(Color.BLACK);
@@ -40,43 +42,43 @@ public class TestFragment extends Fragment {
 
     @Override
     public void onStart() {
-        Log.e("yll", "onStart");
+        LogUtil.yll( "onStart");
         super.onStart();
     }
 
     @Override
     public void onResume() {
-        Log.e("yll", "onResume");
+        LogUtil.yll( "onResume");
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        Log.e("yll", "onPause");
+        LogUtil.yll( "onPause");
         super.onPause();
     }
 
     @Override
     public void onStop() {
-        Log.e("yll", "onStop");
+        LogUtil.yll( "onStop");
         super.onStop();
     }
 
     @Override
     public void onDestroyView() {
-        Log.e("yll", "onDestroyView");
+        LogUtil.yll( "onDestroyView");
         super.onDestroyView();
     }
 
     @Override
     public void onDestroy() {
-        Log.e("yll", "onDestroy");
+        LogUtil.yll( "onDestroy");
         super.onDestroy();
     }
 
     @Override
     public void onDetach() {
-        Log.e("yll", "onAttach");
+        LogUtil.yll( "onAttach");
         super.onDetach();
     }
 }

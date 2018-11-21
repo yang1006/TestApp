@@ -1,7 +1,6 @@
 package yll.self.testapp.compont;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -12,11 +11,13 @@ import android.support.v4.content.PermissionChecker;
 import android.view.View;
 import android.widget.Toast;
 
+import yll.self.testapp.BaseActivity;
 import yll.self.testapp.compont.broadCast.CancelStaticBroadCastActivity;
 import yll.self.testapp.compont.broadCast.SendBroadCastActivity;
 import yll.self.testapp.R;
 import yll.self.testapp.compont.broadCast.SendBroadCastActivityNewProcess;
 import yll.self.testapp.compont.contentprovider.ContentProviderActivity;
+import yll.self.testapp.compont.fragment.TestFragmentActivity;
 import yll.self.testapp.compont.service.TestServiceActivity;
 import yll.self.testapp.compont.wallpaper.WallPaperActivity;
 
@@ -24,7 +25,7 @@ import yll.self.testapp.compont.wallpaper.WallPaperActivity;
  * Created by yll on 2016/1/19.
  *
  */
-public class CompontActivity extends Activity implements View.OnClickListener {
+public class CompontActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,7 @@ public class CompontActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_provider).setOnClickListener(this);
         findViewById(R.id.tv_wallpaper).setOnClickListener(this);
         findViewById(R.id.tv_broadcast3).setOnClickListener(this);
+        findViewById(R.id.tv_fragment).setOnClickListener(this);
     }
 
     @Override
@@ -70,6 +72,9 @@ public class CompontActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_broadcast3:
                 startActivity(new Intent(CompontActivity.this, CancelStaticBroadCastActivity.class));
+                break;
+            case R.id.tv_fragment:
+                startActivity(new Intent(mActivity, TestFragmentActivity.class));
                 break;
         }
     }
