@@ -1,10 +1,16 @@
 package yll.self.testapp;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.PermissionChecker;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -27,6 +33,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private TextView tv_normal, tv_data_save;
     private Context ctx;
 
+    private final int CODE_REQUEST_CAMERA = 100;
+    private final int CODE_REQUEST_STORAGE = 101;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +45,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         ctx = MainActivity.this;
         init();
         tv_normal = (TextView) findViewById(R.id.tv_normal);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestStoragePermission();
+        }
     }
 
     private void init(){
@@ -91,6 +103,21 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 intent = new Intent(ctx, OpenGLMainActivity.class);
                 startActivity(intent);
                 break;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void requestStoragePermission(){
+        if (PermissionChecker.checkSelfPermission(this, Manifest.permission_group.STORAGE) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, CODE_REQUEST_STORAGE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CODE_REQUEST_STORAGE){
+
         }
     }
 

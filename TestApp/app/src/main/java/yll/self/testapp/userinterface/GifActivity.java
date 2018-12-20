@@ -20,6 +20,7 @@ import java.io.OutputStream;
 
 import pl.droidsonroids.gif.GifDrawable;
 import yll.self.testapp.R;
+import yll.self.testapp.utils.UtilsManager;
 
 public class GifActivity extends AppCompatActivity {
 
@@ -51,11 +52,11 @@ public class GifActivity extends AppCompatActivity {
                         Log.e("yll", "failed");
                     }else {
                         Log.e("yll", "success");
-                        File parent = new File(Environment.getExternalStorageDirectory() + "/testApp");
+                        File parent = new File(UtilsManager.FILE_PATH);
                         if (!parent.exists()){
                             parent.mkdirs();
                         }
-                        final File newFile = new File(Environment.getExternalStorageDirectory() + "/testApp/111.gif");
+                        final File newFile = new File(UtilsManager.FILE_PATH + "/111.gif");
                         copySdcardFile(file.getAbsolutePath(), newFile.getAbsolutePath());
                         runOnUiThread(new Runnable() {
                             @Override

@@ -2,6 +2,7 @@ package yll.self.testapp.utils;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -9,6 +10,8 @@ import android.util.Log;
  * Created by yll on 2016/1/19.
  */
 public class UtilsManager {
+
+    public static final String FILE_PATH = Environment.getExternalStorageDirectory() + "/testApp";
 
     public static void log(String s){
         Log.e("yll", s);

@@ -108,6 +108,8 @@
             android:label="第一个三角形"/>
         <activity android:name=".opengl.HelloRectangleActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".opengl.HelloTextureActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".opengl.Chapter6Example6_3Activity" />
         <activity android:name=".video.VideoMainActivity" />
         <activity android:name=".video.PlayerActivity" />

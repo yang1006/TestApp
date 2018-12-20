@@ -22,6 +22,7 @@ public class OpenGLMainActivity extends BaseActivity implements View.OnClickList
         findViewById(R.id.tv_first_triangle).setOnClickListener(this);
         findViewById(R.id.tv_6_3).setOnClickListener(this);
         findViewById(R.id.tv_first_rectangel).setOnClickListener(this);
+        findViewById(R.id.tv_draw_texture).setOnClickListener(this);
     }
 
     @Override
@@ -35,6 +36,10 @@ public class OpenGLMainActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.tv_first_rectangel:
                 startActivity(new Intent(mActivity, HelloRectangleActivity.class));
+                break;
+            case R.id.tv_draw_texture:
+                startActivity(new Intent(mActivity, HelloTextureActivity.class));
+                break;
         }
     }
 }
