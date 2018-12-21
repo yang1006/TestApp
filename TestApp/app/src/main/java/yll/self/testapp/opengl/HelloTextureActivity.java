@@ -79,12 +79,12 @@ public class HelloTextureActivity extends BaseActivity {
 
     private class HelloTextureRenderer implements GLSurfaceView.Renderer {
 
-        /**三角形的三个顶点*/
+        /**矩形的4个顶点*/
         private final float VERTICES[] = {
-                1f, 1f, 0,
-                -1f, 1f, 0,
-                -1f, -1f, 0,
-                1f, -1f, 0
+                0.5f, 0.5f, 0,
+                -0.5f, 0.5f, 0,
+                -0.5f, -0.5f, 0,
+                0.5f, -0.5f, 0
         };
 
         private final short[] VERTEX_INDEX = {0, 1, 2, 0, 2, 3};
