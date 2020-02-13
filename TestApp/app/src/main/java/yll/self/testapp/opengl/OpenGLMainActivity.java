@@ -40,6 +40,8 @@ public class OpenGLMainActivity extends BaseActivity implements View.OnClickList
             case R.id.tv_draw_texture:
                 startActivity(new Intent(mActivity, HelloTextureActivity.class));
                 break;
+            default:
+                break;
         }
     }
 }
