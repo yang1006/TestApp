@@ -44,9 +44,9 @@ android {
         unitTests.returnDefaultValues = true
     }
 
-//    dataBinding {
-//        enabled = true
-//    }
+    dataBinding {
+        enabled = true
+    }
 
 }
 
