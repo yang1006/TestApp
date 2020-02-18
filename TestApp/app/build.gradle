@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin:'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
 
     sourceSets {
         main {
@@ -16,10 +17,10 @@ android {
     defaultConfig {
         applicationId "yll.self.testapp"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         //自动编译JNI代码并打成so包，还可以使用nkd build生成so包
 //        ndk {
@@ -34,14 +35,18 @@ android {
         }
     }
 
-    productFlavors{
-        tencent{}
-    }
+//    productFlavors{
+//        tencent{}
+//    }
 
     /**修复 单元测试报错 Method d in android.util.Log not mocked*/
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+//    dataBinding {
+//        enabled = true
+//    }
 
 }
 
@@ -55,8 +60,8 @@ repositories {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 //    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.google.android.material:material:1.0.0'
+    compile 'androidx.recyclerview:recyclerview:1.0.0'
 
     //lottie
     compile 'com.airbnb.android:lottie:2.0.0'

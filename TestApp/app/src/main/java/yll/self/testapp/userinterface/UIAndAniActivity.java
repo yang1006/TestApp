@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.PermissionChecker;
+import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.widget.Toast;
 

@@ -3,7 +3,7 @@ package yll.self.testapp.design;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
+import com.google.android.material.tabs.TabLayout;
 import android.widget.Toast;
 
 import yll.self.testapp.R;

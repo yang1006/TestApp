@@ -5,7 +5,6 @@ import org.json.JSONObject;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -24,8 +23,8 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.CommonDataKinds.StructuredPostal;
 import android.provider.ContactsContract.CommonDataKinds.Website;
 import android.provider.ContactsContract.Data;
-import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.AlertDialog;
+import androidx.core.content.PermissionChecker;
+import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 import android.widget.TextView;
 

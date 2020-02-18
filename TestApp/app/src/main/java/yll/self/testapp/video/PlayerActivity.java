@@ -1,7 +1,7 @@
 package yll.self.testapp.video;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import yll.self.testapp.BaseActivity;
 

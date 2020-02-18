@@ -6,7 +6,7 @@ import android.opengl.EGLContext;
 import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 
 /** EGL 相关
  * EGL 是 OpenGL ES 3.0 用于创建surface 和渲染上下文的 API*/

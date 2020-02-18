@@ -2,7 +2,7 @@ package yll.self.testapp.thirdlib;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import yll.self.testapp.R;
