@@ -20,6 +20,7 @@ import yll.self.testapp.datasave.ParcelableTestClass;
 import yll.self.testapp.datasave.SaveDataActivity;
 import yll.self.testapp.datasave.SerializableTestClass;
 import yll.self.testapp.design.DesignActivity;
+import yll.self.testapp.mvvm.view.MVVMMainActivity;
 import yll.self.testapp.normal.NormalActivity;
 import yll.self.testapp.opengl.OpenGLMainActivity;
 import yll.self.testapp.thirdlib.ThirdLibActivity;
@@ -59,6 +60,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         findViewById(R.id.tv_other).setOnClickListener(this);
         findViewById(R.id.tv_third_lib).setOnClickListener(this);
         findViewById(R.id.tv_open_gl).setOnClickListener(this);
+        findViewById(R.id.tv_mvvm).setOnClickListener(this);
         SerializableTestClass.serialize();
         SerializableTestClass.deSerialize();
 
@@ -100,6 +102,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.tv_open_gl:
                 intent = new Intent(ctx, OpenGLMainActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.tv_mvvm:
+                intent = new Intent(ctx, MVVMMainActivity.class);
+                startActivity(intent);
+                break;
+            default:
                 break;
         }
     }

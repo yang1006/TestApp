@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="yll.self.testapp.mvvm.viewmodel.MainViewModel"/>
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="observeViewModel"
+            type="yll.self.testapp.mvvm.viewmodel.ObserveViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".mvvm.view.MVVMMainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.name}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.age)}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.isMan ? @string/man : @string/woman}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{v -> viewModel.ageGrow()}"
+            android:text="点我年龄加一"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{v -> viewModel.changeName()}"
+            android:text="点我修改名字"/>
+
+        <Button
+            android:id="@+id/btn_chang_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{text}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{observeViewModel.mFirstName}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{observeViewModel.lastName}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改姓"
+            android:onClick="@{v -> observeViewModel.changeLastName()}"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.name}"
+            android:hint="输入什么，viewModel属性就相应改变，并显示在上面"/>
+
+        <!--把这里的viewMode 传给include 的布局-->
+        <include layout="@layout/layout_mvvm_include"
+            viewModel="@{viewModel}"/>
+
+    </LinearLayout>
+</layout>
