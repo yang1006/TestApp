@@ -15,6 +15,8 @@
         <variable
             name="observeViewModel"
             type="yll.self.testapp.mvvm.viewmodel.ObserveViewModel" />
+
+        <import type="yll.self.testapp.mvvm.databinding.ViewBindingInjectionKt"/>
     </data>
 
     <LinearLayout
@@ -81,6 +83,23 @@
         <!--把这里的viewMode 传给include 的布局-->
         <include layout="@layout/layout_mvvm_include"
             viewModel="@{viewModel}"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            imgUrl="@{viewModel.imgUrl}"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.numSex)}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={ViewBindingInjectionKt.numToSex(viewModel.numSex)}"
+            android:hint=""/>
 
     </LinearLayout>
 </layout>

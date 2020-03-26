@@ -10,6 +10,8 @@ class MainViewModel {
     var age = ObservableInt(10)
     var isMan = true
     var includeText = "嵌套的字符串"
+    val imgUrl = "http://m.imeitou.com/uploads/allimg/2019102119/xybbwq2gytt.jpg"
+    val numSex = ObservableInt(1)
 
     fun ageGrow() {
         var lastAge = age.get()
