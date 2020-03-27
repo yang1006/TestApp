@@ -2,16 +2,23 @@ package yll.self.testapp.mvvm.lifecycle
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.activity_view_model.*
+import kotlinx.android.synthetic.main.activity_view_model_test.*
 import yll.self.testapp.R
+import yll.self.testapp.databinding.ActivityViewModelTestBindingImpl
 
 class ViewModelActivity : AppCompatActivity() {
 
+    private lateinit var mDataBinding: ActivityViewModelTestBindingImpl
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_model)
+//        setContentView(R.layout.activity_view_model)
+        mDataBinding = DataBindingUtil.setContentView<ActivityViewModelTestBindingImpl>(this, R.layout.activity_view_model_test)
+
         val userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
         //构造带参数的viewModel
@@ -28,6 +35,13 @@ class ViewModelActivity : AppCompatActivity() {
             userViewModel.user.value = user
             //setValue只能在主线程，postValue只能在后头线程
         }
+        mDataBinding.userViewModel = userViewModel
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mDataBinding.unbind()
     }
 
 }

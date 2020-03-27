@@ -16,9 +16,9 @@ class MVVMMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBinding = DataBindingUtil.setContentView<ActivityMvvmTestBindingImpl>(this, R.layout.activity_mvvm_test)
-        mDataBinding.viewModel = MainViewModel()
-        mDataBinding.text = "点我不能也修改名字"
-        mDataBinding.observeViewModel = ObserveViewModel()
+        mDataBinding.setViewModel( MainViewModel())
+        mDataBinding.setText("点我不能也修改名字")
+        mDataBinding.setObserveViewModel(ObserveViewModel())
     }
 
     override fun onDestroy() {
