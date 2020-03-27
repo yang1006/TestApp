@@ -20,6 +20,7 @@ import yll.self.testapp.compont.contentprovider.ContentProviderActivity;
 import yll.self.testapp.compont.fragment.TestFragmentActivity;
 import yll.self.testapp.compont.service.TestServiceActivity;
 import yll.self.testapp.compont.wallpaper.WallPaperActivity;
+import yll.self.testapp.mvvm.lifecycle.ViewModelActivity;
 
 /**
  * Created by yll on 2016/1/19.
@@ -41,6 +42,7 @@ public class CompontActivity extends BaseActivity implements View.OnClickListene
         findViewById(R.id.tv_wallpaper).setOnClickListener(this);
         findViewById(R.id.tv_broadcast3).setOnClickListener(this);
         findViewById(R.id.tv_fragment).setOnClickListener(this);
+        findViewById(R.id.tv_lifecycle).setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +77,9 @@ public class CompontActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.tv_fragment:
                 startActivity(new Intent(mActivity, TestFragmentActivity.class));
+                break;
+            case R.id.tv_lifecycle:
+                startActivity(new Intent(mActivity, ViewModelActivity.class));
                 break;
         }
     }
