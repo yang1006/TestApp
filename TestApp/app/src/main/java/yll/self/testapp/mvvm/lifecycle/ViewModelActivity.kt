@@ -26,9 +26,9 @@ class ViewModelActivity : AppCompatActivity() {
         val msgViewModel = ViewModelProviders.of(this, factory).get(MsgViewModel::class.java)
 
         //监听ViewModel中的user的变化，当他变化时，会将textView重新设置问题
-        userViewModel.user.observe(this, Observer {
-            tv_name.text = it?.name
-        })
+//        userViewModel.user.observe(this, Observer {
+//            tv_name.text = it?.name
+//        })
 
         btn_name.setOnClickListener{
             val user = User("Rose", 18, 0)
@@ -36,6 +36,8 @@ class ViewModelActivity : AppCompatActivity() {
             //setValue只能在主线程，postValue只能在后头线程
         }
         mDataBinding.userViewModel = userViewModel
+        //让xml内绑定的LiveData和Observer建立连接，让LiveData能感知Activity的生命周期
+        mDataBinding.lifecycleOwner = this
 
     }
 

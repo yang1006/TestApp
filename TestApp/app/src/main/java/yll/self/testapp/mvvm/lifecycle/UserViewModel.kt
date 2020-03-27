@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
-data class User(var name: String, var age: Int, var sex: Int)
+data class User(val name: String, val age: Int, val sex: Int)
 
 class UserViewModel : ViewModel() {
 //    val user = User("jack", 20, 1)
