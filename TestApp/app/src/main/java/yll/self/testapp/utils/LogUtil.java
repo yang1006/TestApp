@@ -20,4 +20,8 @@ public class LogUtil {
     public static void d(String msg){
         Log.d("yll", msg);
     }
+
+    public static void e(String tag, String msg) {
+        Log.e(tag, msg);
+    }
 }

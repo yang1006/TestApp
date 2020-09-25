@@ -7,6 +7,7 @@ import android.view.View;
 
 import yll.self.testapp.BaseActivity;
 import yll.self.testapp.R;
+import yll.self.testapp.opengl.newstudy.triangle.MyTriangleActivity;
 
 public class OpenGLMainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -28,7 +29,7 @@ public class OpenGLMainActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tv_first_triangle:
-                startActivity(new Intent(mActivity, HelloTriangleActivity.class));
+                startActivity(new Intent(mActivity, MyTriangleActivity.class));
                 break;
             case R.id.tv_6_3:
                 startActivity(new Intent(mActivity, Chapter6Example6_3Activity.class));
