@@ -6,7 +6,9 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-public class Shape {
+import yll.self.testapp.opengl.newstudy.BaseShape;
+
+public class Shape extends BaseShape {
 
     private Context mContext;
 
@@ -25,35 +27,19 @@ public class Shape {
             1.0f, 0.0f, 0.0f, 1.0f
     };
 
-    private FloatBuffer mTriangleVerFloatBuffer;
-    private FloatBuffer mTriangleColorFloatBuffer;
-
 
     public Shape(Context context) {
         mContext = context;
     }
 
-    public FloatBuffer getFloatBuffer(float verTex[]) {
-        ByteBuffer bb = ByteBuffer.allocateDirect(verTex.length * 4);
-        bb.order(ByteOrder.nativeOrder());
-        FloatBuffer vertexBuffer = bb.asFloatBuffer();
-        vertexBuffer.put(verTex);
-        vertexBuffer.position(0);
-        return vertexBuffer;
+
+    @Override
+    protected float[] getVertexFloatArray() {
+        return mTriangleVertex;
     }
 
-    public FloatBuffer getVertexFloatBuffer() {
-        if (mTriangleVerFloatBuffer == null) {
-            mTriangleVerFloatBuffer = getFloatBuffer(mTriangleVertex);
-        }
-        return mTriangleVerFloatBuffer;
+    @Override
+    protected float[] getColorFloatArray() {
+        return mTriangleColor;
     }
-
-    public FloatBuffer getColorFloatBuffer() {
-        if (mTriangleColorFloatBuffer == null) {
-            mTriangleColorFloatBuffer = getFloatBuffer(mTriangleColor);
-        }
-        return mTriangleColorFloatBuffer;
-    }
-
 }
