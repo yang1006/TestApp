@@ -112,6 +112,7 @@
         <activity android:name=".video.VideoMainActivity" />
         <activity android:name=".video.PlayerActivity" />
         <activity android:name=".compont.fragment.TestFragmentActivity"/>
+        <activity android:name=".kotlin.CoroutinesTestActivity"/>
 
         <service
             android:name=".compont.wallpaper.CameraLiveWallpaper"

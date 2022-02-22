@@ -9,6 +9,8 @@ import android.util.Log;
 
 public class LogUtil {
 
+    private static final String APP_TAG = "TestApp ";
+
     public static void println(String msg){
         System.out.println(msg);
     }
@@ -21,7 +23,11 @@ public class LogUtil {
         Log.d("yll", msg);
     }
 
+    public static void d(String tag, String msg) {
+        Log.d(APP_TAG + tag, msg);
+    }
+
     public static void e(String tag, String msg) {
-        Log.e(tag, msg);
+        Log.e(APP_TAG + tag, msg);
     }
 }

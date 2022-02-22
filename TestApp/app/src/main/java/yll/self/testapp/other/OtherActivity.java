@@ -23,6 +23,7 @@ import yll.self.testapp.WebviewTestActivity;
 import yll.self.testapp.hook.HookTestActivity;
 import yll.self.testapp.jni.JniUtil;
 import yll.self.testapp.jni.MyJni;
+import yll.self.testapp.kotlin.CoroutinesTestActivity;
 import yll.self.testapp.other.annotation.CustomAnnotationActivity;
 import yll.self.testapp.other.lockscreen.LockScreenService;
 import yll.self.testapp.other.thread.ThreadTestActivity;
@@ -52,6 +53,7 @@ public class OtherActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_tts).setOnClickListener(this);
         findViewById(R.id.tv_surfaceView).setOnClickListener(this);
         findViewById(R.id.tv_thread).setOnClickListener(this);
+        findViewById(R.id.tv_coroutines).setOnClickListener(this);
 
         tv_jni = findViewById(R.id.tv_jni);
 //        new MyJni().set("今天");
@@ -86,6 +88,9 @@ public class OtherActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_thread:
                 startActivity(new Intent(this, ThreadTestActivity.class));
+                break;
+            case R.id.tv_coroutines:
+                startActivity(new Intent(this, CoroutinesTestActivity.class));
                 break;
         }
     }
